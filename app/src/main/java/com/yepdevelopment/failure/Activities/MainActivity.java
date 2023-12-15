@@ -1,4 +1,4 @@
-package com.yepdevelopment.failure;
+package com.yepdevelopment.failure.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
