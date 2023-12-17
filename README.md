@@ -9,6 +9,7 @@ A grade tracking app, created with the intention of being able to calculate mini
     - For now, things like prerequisites will not need to be implemented
   - Users shall be able to create courses
   - Users shall be able to input assignments/projects/exams/etc. into a given course
+  - The minimum grade can be treated as the "desired grade", or perhaps it may be a better idea to have a separate number for the "desired grade" (the grade the user wants to achieve, which may be above the actual minimum for the course itself)
   - With the set of submittables defined by the user, calculate the current expected grade in the course as a number out of 100
     - The user may be able to choose whether to display it as a letter grade or as a number
 
