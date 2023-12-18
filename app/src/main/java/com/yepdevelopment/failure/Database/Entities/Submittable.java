@@ -1,8 +1,9 @@
-package com.yepdevelopment.failure.Domain;
+package com.yepdevelopment.failure.Database.Entities;
 
-/**
- * @generated
- */
+import androidx.room.Entity;
+
+
+@Entity
 public class Submittable {
     private String id;
     private String name;

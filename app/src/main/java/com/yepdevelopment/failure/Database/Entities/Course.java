@@ -1,11 +1,12 @@
-package com.yepdevelopment.failure.Domain;
+package com.yepdevelopment.failure.Database.Entities;
+
+import androidx.room.Entity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @generated
- */
+
+@Entity
 public class Course {
     private String id;
     private String name;
