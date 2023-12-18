@@ -19,4 +19,9 @@ Ok, but seriously, the primary goal of the app is to calculate minimum grades ne
   - Each submittable will contain a name, a description (optional), when the assignment was assigned, due date, a weight, max grade, and achieved grade
     - Additionally, things that help categorization such as what unit/chapter the submittable belongs to could be something to consider implementing, maybe later down the line
   - If a submittable has yet to have a grade input, calculate how much the user needs to achieve in order to not fail the course
-  - 
+
+- Calculating Lowest Grade
+  - By lowest possible grade spread across all incomplete assignments
+  - By prioritizing higher weight assignments
+    - Perhaps let the user specify the minimum cutoff weight in which an assignment should be considered
+      - Any other assignment with a weight less than the one set by the user will be ignored from lowest grade calculations (i.e. treated as having a grade of 0 already)
