@@ -15,4 +15,9 @@
         <item name="tint">@color/white</item>
         <item name="backgroundTint">?attr/colorPrimary</item>
     </style>
+
+    <style name="customToolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextColor">@color/white</item>
+        <item name="subtitleTextColor">@color/darkerGray</item>
+    </style>
 </resources>
