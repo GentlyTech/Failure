@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonCancelAddCourse"
                 android:layout_weight="1"
-                android:backgroundTint="@color/gray" />
+                style="@style/secondaryButton" />
 
         <View
                 android:id="@+id/divider"
