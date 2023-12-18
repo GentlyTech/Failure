@@ -16,12 +16,10 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.google.android.material.textfield.TextInputLayout;
 import com.yepdevelopment.failure.R;
 import com.yepdevelopment.failure.ViewModels.MainViewModel;
-import com.yepdevelopment.failure.databinding.FragmentAddCourseBinding;
 
 public class AddCourseFragment extends Fragment {
     MainViewModel mainViewModel;
     NavController navController;
-    private FragmentAddCourseBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,8 +31,7 @@ public class AddCourseFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentAddCourseBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+        return inflater.inflate(R.layout.fragment_add_course, container, false);
     }
 
     @Override
