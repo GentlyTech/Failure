@@ -12,8 +12,10 @@
     <string name="addCourseFragmentTitle">Add Course</string>
 
     <!-- Add Course Fragment -->
-    <string name="editTextCourseName_hint">Course Name</string>
-    <string name="editTextCourseSubject_hint">Course Subject</string>
+    <string name="editTextCourseName_hint">Name</string>
+    <string name="editTextCourseSubject_hint">Subject</string>
+    <string name="editTextCourseStartDate_hint">Start Date</string>
+    <string name="editTextCourseEndDate_hint">End Date</string>
     <string name="editTextCourseMinimumGrade_hint">Passing Grade (Optional)</string>
     <string name="editTextCourseMinimumGrade_helperText">The minimum grade needed in this course to pass. Defaults to 50 if left blank.</string>
 

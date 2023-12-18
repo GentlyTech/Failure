@@ -13,12 +13,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/editTextLayoutCourseName">
+            android:id="@+id/editTextLayoutCourseName"
+            android:hint="@string/editTextCourseName_hint">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/editTextCourseName_hint"
                 android:id="@+id/editTextCourseName" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -29,12 +29,12 @@
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/editTextLayoutCourseSubject"
             app:layout_constraintTop_toBottomOf="@+id/editTextLayoutCourseName"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:hint="@string/editTextCourseSubject_hint">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/editTextCourseSubject_hint"
                 android:id="@+id/editTextCourseSubject" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -43,15 +43,49 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/editTextLayoutCourseMinimumGrade"
+            android:id="@+id/editTextLayoutCourseStartDate"
             app:layout_constraintTop_toBottomOf="@+id/editTextLayoutCourseSubject"
             android:layout_marginTop="16dp"
-            app:helperText="@string/editTextCourseMinimumGrade_helperText">
+            android:hint="@string/editTextCourseStartDate_hint">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/editTextCourseMinimumGrade_hint"
+                android:id="@+id/editTextCourseStartDate"
+                android:inputType="datetime|date" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/editTextLayoutCourseEndDate"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutCourseStartDate"
+            android:layout_marginTop="16dp"
+            android:hint="@string/editTextCourseEndDate_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextCourseEndDate"
+                android:inputType="datetime|date" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/editTextLayoutCourseMinimumGrade"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutCourseEndDate"
+            android:layout_marginTop="16dp"
+            app:helperText="@string/editTextCourseMinimumGrade_helperText"
+            android:hint="@string/editTextCourseMinimumGrade_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/editTextCourseMinimumGrade"
                 android:inputType="number|numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
