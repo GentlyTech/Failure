@@ -1,6 +1,8 @@
 # Failure
 
-A grade tracking app, created with the intention of being able to calculate minimum grades needed to pass a given class.
+A grade tracking app, created by failures, for failures.
+
+Ok, but seriously, the primary goal of the app is to calculate minimum grades needed to pass a given class.
 
 ## System Description
 
