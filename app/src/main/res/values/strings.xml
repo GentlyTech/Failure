@@ -9,7 +9,11 @@
 
     <!-- Fragment Titles -->
     <string name="homeFragmentTitle">Home</string>
-    <string name="addCourseFragmentTitle">Add Course</string>
+    <string name="addCourseFragmentTitle">Add course</string>
+
+    <!-- Home Fragment -->
+    <string name="textCourseListEmptyHintHeader_text">No courses</string>
+    <string name="textCourseListEmptyHintBody_text">Create a course using the + button</string>
 
     <!-- Add Course Fragment -->
     <string name="editTextCourseName_hint">Name</string>

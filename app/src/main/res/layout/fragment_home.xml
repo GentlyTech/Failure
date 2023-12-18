@@ -7,6 +7,43 @@
         tools:context=".Fragments.HomeFragment"
         android:id="@+id/homeFragmentLayoutRoot">
 
+    <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/groupCourseListEmptyText"
+            app:constraint_referenced_ids="textCourseListEmptyHintHeader,textCourseListEmptyHintBody" />
+
+    <TextView
+            android:text="@string/textCourseListEmptyHintHeader_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textCourseListEmptyHintHeader"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="24sp"
+            android:textColor="@color/gray" />
+
+    <TextView
+            android:text="@string/textCourseListEmptyHintBody_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textCourseListEmptyHintBody"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/darkerGray"
+            app:layout_constraintTop_toBottomOf="@+id/textCourseListEmptyHintHeader"
+            android:layout_marginTop="8dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/recyclerViewCourseList" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:src="@android:drawable/ic_input_add"
             android:layout_width="wrap_content"
@@ -19,4 +56,5 @@
             android:layout_marginEnd="16dp"
             style="@style/customFloatingActionButton"
             android:focusable="true" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
