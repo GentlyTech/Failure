@@ -1,10 +1,14 @@
 package com.yepdevelopment.failure.Database.Entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 
 @Entity
 public class Submittable {
+    @PrimaryKey
+    @NonNull
     private String id;
     private String name;
     private String description;
@@ -19,10 +23,18 @@ public class Submittable {
      */
     private Course course;
 
-    public Submittable() {
-
+    public Submittable(@NonNull String id) {
+        this.id = id;
     }
 
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return this.name;

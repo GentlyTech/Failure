@@ -1,6 +1,8 @@
 package com.yepdevelopment.failure.Database.Entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +10,8 @@ import java.util.List;
 
 @Entity
 public class Course {
+    @PrimaryKey
+    @NonNull
     private String id;
     private String name;
     private String subject;
@@ -18,12 +22,19 @@ public class Course {
     /**
      * The submittables this class contains.
      */
-    private List<Submittable> submittable;
+    private List<Submittable> submittables;
 
-    public Course() {
-
+    public Course(@NonNull String id) {
+        this.id = id;
     }
 
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return this.name;
@@ -75,16 +86,16 @@ public class Course {
     }
 
 
-    public List<Submittable> getSubmittable() {
-        if (this.submittable == null) {
-            this.submittable = new ArrayList<Submittable>();
+    public List<Submittable> getSubmittables() {
+        if (this.submittables == null) {
+            this.submittables = new ArrayList<Submittable>();
         }
-        return this.submittable;
+        return this.submittables;
     }
 
 
     public void setSubmittables(List<Submittable> submittable) {
-        this.submittable = submittable;
+        this.submittables = submittable;
     }
 
 
