@@ -54,6 +54,19 @@ public class Course {
         this.minimumGrade = minimumGrade;
     }
 
+    /**
+     * Create a Course object with blank defaults.
+     */
+    @Ignore
+    public Course() {
+        this.id = UUID.randomUUID().toString();
+        this.name = "";
+        this.subject = "";
+        this.startDate = "";
+        this.endDate = "";
+        this.minimumGrade = 50;
+    }
+
     public String getId() {
         return this.id;
     }
