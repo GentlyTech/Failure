@@ -1,3 +1,5 @@
 <resources>
     <string name="appName">Failure</string>
+    <string name="homeFragmentTitle">Home</string>
+    <string name="addCourseFragmentTitle">Add Course</string>
 </resources>

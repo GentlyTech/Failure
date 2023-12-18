@@ -7,8 +7,8 @@
     <fragment
             android:id="@+id/homeFragment"
             android:name="com.yepdevelopment.failure.Fragments.HomeFragment"
-            android:label="fragment_home"
-            tools:layout="@layout/fragment_home" >
+            android:label="@string/homeFragmentTitle"
+            tools:layout="@layout/fragment_home">
         <action
                 android:id="@+id/action_homeFragment_to_addCourseFragment"
                 app:destination="@id/addCourseFragment"
@@ -21,6 +21,6 @@
     <fragment
             android:id="@+id/addCourseFragment"
             android:name="com.yepdevelopment.failure.Fragments.AddCourseFragment"
-            android:label="fragment_add_course"
+            android:label="@string/addCourseFragmentTitle"
             tools:layout="@layout/fragment_add_course" />
 </navigation>
