@@ -46,7 +46,9 @@
             android:id="@+id/editTextLayoutCourseStartDate"
             app:layout_constraintTop_toBottomOf="@+id/editTextLayoutCourseSubject"
             android:layout_marginTop="16dp"
-            android:hint="@string/editTextCourseStartDate_hint">
+            android:hint="@string/editTextCourseStartDate_hint"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/baseline_calendar_month_24">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -63,7 +65,9 @@
             android:id="@+id/editTextLayoutCourseEndDate"
             app:layout_constraintTop_toBottomOf="@+id/editTextLayoutCourseStartDate"
             android:layout_marginTop="16dp"
-            android:hint="@string/editTextCourseEndDate_hint">
+            android:hint="@string/editTextCourseEndDate_hint"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/baseline_calendar_month_24">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
