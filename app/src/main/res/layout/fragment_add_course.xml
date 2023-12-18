@@ -5,18 +5,85 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Fragments.AddCourseFragment"
-        android:id="@+id/addCourseFragmentLayoutRoot" >
+        android:id="@+id/addCourseFragmentLayoutRoot">
 
     <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/editTextLayoutCourseName">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint" />
+                android:hint="@string/editTextCourseName_hint"
+                android:id="@+id/editTextCourseName" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/editTextLayoutCourseSubject"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutCourseName"
+            android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/editTextCourseSubject_hint"
+                android:id="@+id/editTextCourseSubject" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/editTextLayoutCourseMinimumGrade"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutCourseSubject"
+            android:layout_marginTop="16dp"
+            app:helperText="@string/editTextCourseMinimumGrade_helperText">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/editTextCourseMinimumGrade_hint"
+                android:id="@+id/editTextCourseMinimumGrade"
+                android:inputType="number|numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutCourseMinimumGrade">
+
+        <Button
+                android:text="@string/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonCancelAddCourse"
+                android:layout_weight="1"
+                android:backgroundTint="@color/gray" />
+
+        <View
+                android:id="@+id/divider"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25" />
+
+        <Button
+                android:text="@string/create"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonConfirmAddCourse"
+                android:layout_weight="1" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
