@@ -2,7 +2,10 @@ package com.yepdevelopment.failure.Database.Entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+
+import java.util.UUID;
 
 
 @Entity
@@ -14,19 +17,35 @@ public class Submittable {
     private String description;
     private String assignDate;
     private String dueDate;
+    private String associatedCourseId;
     private float weight;
     private float maxGrade;
     private float achievedGrade;
 
-    /**
-     * The course that is associated with this Submittable.
-     */
-    private Course course;
-
-    public Submittable(@NonNull String id) {
+    public Submittable(@NonNull String id, String name, String description, String assignDate, String dueDate, String associatedCourseId, float weight, float maxGrade, float achievedGrade) {
         this.id = id;
+        this.name = name;
+        this.description = description;
+        this.assignDate = assignDate;
+        this.dueDate = dueDate;
+        this.associatedCourseId = associatedCourseId;
+        this.weight = weight;
+        this.maxGrade = maxGrade;
+        this.achievedGrade = achievedGrade;
     }
 
+    @Ignore
+    public Submittable(String name, String description, String assignDate, String dueDate, float weight, float maxGrade, float achievedGrade) {
+        this.id = UUID.randomUUID().toString();
+        this.name = name;
+        this.description = description;
+        this.assignDate = assignDate;
+        this.dueDate = dueDate;
+        this.associatedCourseId = "";
+        this.weight = weight;
+        this.maxGrade = maxGrade;
+        this.achievedGrade = achievedGrade;
+    }
 
     public String getId() {
         return this.id;
@@ -75,6 +94,15 @@ public class Submittable {
         this.dueDate = dueDate;
     }
 
+    public String getAssociatedCourseId() {
+        return this.associatedCourseId;
+    }
+
+
+    public void setAssociatedCourseId(String associatedCourseId) {
+        this.associatedCourseId = associatedCourseId;
+    }
+
 
     public float getWeight() {
         return this.weight;
@@ -104,16 +132,5 @@ public class Submittable {
     public void setAchievedGrade(float achievedGrade) {
         this.achievedGrade = achievedGrade;
     }
-
-
-    public Course getCourse() {
-        return this.course;
-    }
-
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
 
 }
