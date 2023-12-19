@@ -3,23 +3,26 @@ package com.yepdevelopment.failure.Fragments;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.Group;
+import androidx.core.view.MenuHost;
+import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.yepdevelopment.failure.Adapters.CourseAdapter;
 import com.yepdevelopment.failure.Database.AppDatabase;
 import com.yepdevelopment.failure.R;
+import com.yepdevelopment.failure.Utils.JavaRX.Async;
 import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
 import com.yepdevelopment.failure.databinding.FragmentHomeBinding;
 
@@ -38,7 +41,7 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -46,6 +49,23 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        MenuHost menuHost = requireActivity();
+        menuHost.addMenuProvider(new MenuProvider() {
+            @Override
+            public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+                menuInflater.inflate(R.menu.general_options, menu);
+            }
+
+            @Override
+            public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+                if (menuItem.getItemId() == R.id.generalOptionAbout) {
+                    navController.navigate(CourseOverviewFragmentDirections.actionCourseOverviewFragmentToHomeFragment());
+                    return true;
+                }
+                return false;
+            }
+        }, getViewLifecycleOwner()); // FIXME does not remove menu from toolbar when deleting a course
+
         binding.recyclerViewCourseList.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         database.courseDao().getAll().observe(getViewLifecycleOwner(), (courses -> {
