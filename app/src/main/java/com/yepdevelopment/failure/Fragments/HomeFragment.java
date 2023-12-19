@@ -1,6 +1,7 @@
 package com.yepdevelopment.failure.Fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,10 @@ public class HomeFragment extends Fragment {
         database.courseDao().getAll().observe(getViewLifecycleOwner(), (courses -> {
             if (courses != null) {
                 setCourseListVisibility(!courses.isEmpty());
-                binding.recyclerViewCourseList.setAdapter(new CourseAdapter(requireContext(), courses));
+                binding.recyclerViewCourseList.setAdapter(new CourseAdapter(requireContext(), courses, (course) -> {
+                    mainViewModel.setSelectedCourse(course);
+                    Log.i(HomeFragment.class.getName(), String.format("Selected course set to: %s", course.getName()));
+                }));
                 return;
             }
             setCourseListVisibility(false);
