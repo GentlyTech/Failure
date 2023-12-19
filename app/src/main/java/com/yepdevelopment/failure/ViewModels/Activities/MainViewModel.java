@@ -6,8 +6,6 @@ import androidx.lifecycle.ViewModel;
 
 import com.yepdevelopment.failure.Database.Entities.Course;
 
-import java.util.List;
-
 public class MainViewModel extends ViewModel {
     private final MutableLiveData<Course> selectedCourse = new MutableLiveData<>();
 

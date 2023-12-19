@@ -16,6 +16,7 @@ import com.yepdevelopment.failure.Database.AppDatabase;
 import com.yepdevelopment.failure.Database.Entities.Course;
 import com.yepdevelopment.failure.R;
 import com.yepdevelopment.failure.Utils.Android.Parsing;
+import com.yepdevelopment.failure.Utils.JavaRX.Async;
 import com.yepdevelopment.failure.Validators.AddCourseValidator;
 import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
 import com.yepdevelopment.failure.databinding.FragmentAddCourseBinding;
@@ -23,9 +24,6 @@ import com.yepdevelopment.failure.databinding.FragmentAddCourseBinding;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-
-import io.reactivex.rxjava3.core.Completable;
-import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class AddCourseFragment extends Fragment {
     MainViewModel mainViewModel;
@@ -106,9 +104,7 @@ public class AddCourseFragment extends Fragment {
 
         Course course = new Course(courseName, courseSubject, courseStartDate, courseEndDate, courseMinimumGrade);
 
-        Completable.fromRunnable(() -> {
-            database.courseDao().insertAll(course).subscribe();
-        }).subscribeOn(Schedulers.io()).subscribe();
+        Async.run(database.courseDao().insertAll(course));
 
         navController.popBackStack();
     }

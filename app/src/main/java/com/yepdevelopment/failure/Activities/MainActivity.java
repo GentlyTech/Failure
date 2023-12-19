@@ -3,7 +3,6 @@ package com.yepdevelopment.failure.Activities;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -13,6 +12,8 @@ import androidx.navigation.ui.NavigationUI;
 import com.yepdevelopment.failure.R;
 import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
 import com.yepdevelopment.failure.databinding.ActivityMainBinding;
+
+import java.lang.reflect.Field;
 
 public class MainActivity extends AppCompatActivity {
     MainViewModel mainViewModel;
@@ -31,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         if (navHostFragment == null) return;
         navController = navHostFragment.getNavController();
 
+        setSupportActionBar(binding.toolbarMainActivity);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupWithNavController(binding.toolbarMainActivity, navController, appBarConfiguration);
     }
-
 }
