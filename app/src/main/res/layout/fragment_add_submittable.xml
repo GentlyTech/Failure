@@ -87,7 +87,8 @@
             android:id="@+id/editTextLayoutSubmittableWeight"
             app:layout_constraintTop_toBottomOf="@+id/editTextLayoutSubmittableDueDate"
             android:layout_marginTop="16dp"
-            android:hint="@string/editTextSubmittableWeight_hint">
+            android:hint="@string/editTextSubmittableWeight_hint"
+            app:helperText="@string/editTextSubmittableWeight_helperText">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"

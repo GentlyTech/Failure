@@ -42,7 +42,12 @@
     <string name="editTextSubmittableAssignDate_hint">Date Assigned</string>
     <string name="editTextSubmittableDueDate_hint">Due Date</string>
     <string name="editTextSubmittableWeight_hint">Weight</string>
-    <string name="editTextSubmittableMaxGrade_hint">Max Grade</string>
-    <string name="editTextSubmittableMaxGrade_helperText">How many points this assignment is out of.</string>
+    <string name="editTextSubmittableWeight_helperText">A decimal between 0 and 100, inclusive.</string>
+    <string name="editTextSubmittableMaxGrade_hint">Max Grade (Optional)</string>
+    <string name="editTextSubmittableMaxGrade_helperText">How many points this assignment is out of; defaults to 100 if left blank.</string>
+    <string name="editTextSubmittableName_errorHint">Invalid Name</string>
+    <string name="editTextSubmittableAssignDate_errorHint">Invalid Start Date</string>
+    <string name="editTextSubmittableDueDate_errorHint">Invalid End Date</string>
+    <string name="editTextSubmittableWeight_errorHint">Invalid Weight</string>
 
 </resources>

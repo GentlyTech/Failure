@@ -47,6 +47,32 @@ public class Submittable {
         this.achievedGrade = achievedGrade;
     }
 
+    @Ignore
+    public Submittable(@NonNull String id, String name, String description, String assignDate, String dueDate, String associatedCourseId, float weight, float maxGrade) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.assignDate = assignDate;
+        this.dueDate = dueDate;
+        this.associatedCourseId = associatedCourseId;
+        this.weight = weight;
+        this.maxGrade = maxGrade;
+        this.achievedGrade = 0.0f;
+    }
+
+    @Ignore
+    public Submittable(String name, String description, String assignDate, String dueDate, float weight, float maxGrade) {
+        this.id = UUID.randomUUID().toString();
+        this.name = name;
+        this.description = description;
+        this.assignDate = assignDate;
+        this.dueDate = dueDate;
+        this.associatedCourseId = "";
+        this.weight = weight;
+        this.maxGrade = maxGrade;
+        this.achievedGrade = 0.0f;
+    }
+
     @NonNull
     public String getId() {
         return this.id;

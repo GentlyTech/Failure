@@ -21,6 +21,7 @@ import com.yepdevelopment.failure.R;
 import com.yepdevelopment.failure.Utils.Android.Parsing;
 import com.yepdevelopment.failure.Utils.JavaRX.Async;
 import com.yepdevelopment.failure.Validators.AddCourseValidator;
+import com.yepdevelopment.failure.Validators.CommonValidator;
 import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
 import com.yepdevelopment.failure.databinding.FragmentAddCourseBinding;
 
@@ -80,14 +81,14 @@ public class AddCourseFragment extends Fragment {
         binding.buttonCancelAddCourse.setOnClickListener(button -> navController.popBackStack());
     }
 
-    public void clearErrors() {
+    public void clearFieldErrors() {
         binding.editTextLayoutCourseName.setError(null);
         binding.editTextLayoutCourseStartDate.setError(null);
         binding.editTextLayoutCourseEndDate.setError(null);
     }
 
     public void createCourse(View button) {
-        clearErrors();
+        clearFieldErrors();
 
         String courseName = Parsing.editableToString(binding.editTextCourseName.getText());
         String courseSubject = Parsing.editableToString(binding.editTextCourseSubject.getText());
@@ -101,11 +102,11 @@ public class AddCourseFragment extends Fragment {
             binding.editTextLayoutCourseName.setError(getString(R.string.editTextCourseName_errorHint));
             hasError = true;
         }
-        if (!AddCourseValidator.isDateValid(courseStartDate)) {
+        if (!CommonValidator.isDateValid(courseStartDate)) {
             binding.editTextLayoutCourseStartDate.setError(getString(R.string.editTextCourseStartDate_errorHint));
             hasError = true;
         }
-        if (!AddCourseValidator.isCourseNameValid(courseEndDate)) {
+        if (!CommonValidator.isDateValid(courseEndDate)) {
             binding.editTextLayoutCourseEndDate.setError(getString(R.string.editTextCourseEndDate_errorHint));
             hasError = true;
         }
