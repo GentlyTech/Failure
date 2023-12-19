@@ -50,10 +50,22 @@
                 app:exitAnim="@anim/fade_out"
                 app:popExitAnim="@anim/fade_out"
                 app:popEnterAnim="@anim/pop_in" />
+        <action
+                android:id="@+id/action_courseOverviewFragment_to_addSubmittableFragment"
+                app:destination="@id/addSubmittableFragment"
+                app:enterAnim="@anim/pop_in"
+                app:exitAnim="@anim/pop_out"
+                app:popEnterAnim="@anim/pop_in"
+                app:popExitAnim="@anim/pop_out" />
     </fragment>
     <fragment
             android:id="@+id/aboutFragment"
             android:name="com.yepdevelopment.failure.Fragments.AboutFragment"
             android:label="@string/aboutFragmentTitle"
             tools:layout="@layout/fragment_about" />
+    <fragment
+            android:id="@+id/addSubmittableFragment"
+            android:name="com.yepdevelopment.failure.Fragments.AddSubmittableFragment"
+            android:label="@string/addSubmittableFragmentTitle"
+            tools:layout="@layout/fragment_add_submittable" />
 </navigation>
