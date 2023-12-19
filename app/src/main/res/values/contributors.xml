@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="contributorAndyYep">
+        <item>Andy Yep (GentlyTech)</item>
+        <item></item>
+    </string-array>
+    <array name="contributors">
+        <item>@array/contributorAndyYep</item>
+    </array>
+</resources>

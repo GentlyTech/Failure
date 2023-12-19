@@ -25,7 +25,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
         this.context = context;
 
         if (courses == null) {
-            this.courses = new ArrayList<>();
+            this.courses = new ArrayList<>(0);
         } else {
             this.courses = courses;
         }
