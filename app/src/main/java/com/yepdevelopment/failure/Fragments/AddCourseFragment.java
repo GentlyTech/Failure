@@ -16,7 +16,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.yepdevelopment.failure.R;
-import com.yepdevelopment.failure.ViewModels.MainViewModel;
+import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

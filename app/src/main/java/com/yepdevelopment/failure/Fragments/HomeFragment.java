@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.yepdevelopment.failure.Database.Entities.Course;
 import com.yepdevelopment.failure.R;
-import com.yepdevelopment.failure.ViewModels.MainViewModel;
+import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
 
 import java.util.List;
 

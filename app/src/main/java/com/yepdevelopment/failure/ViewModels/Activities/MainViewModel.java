@@ -1,4 +1,4 @@
-package com.yepdevelopment.failure.ViewModels;
+package com.yepdevelopment.failure.ViewModels.Activities;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
