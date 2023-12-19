@@ -17,18 +17,4 @@ public class AddCourseValidator {
     public static boolean isCourseNameValid(String courseName) {
         return courseName != null && !courseName.isEmpty();
     }
-
-    public static boolean isDateValid(String date) {
-        if (date == null) return false;
-
-        SimpleDateFormat dateFormatter = new SimpleDateFormat(DATE_FORMAT, Locale.CANADA);
-        dateFormatter.setLenient(false);
-
-        try {
-            dateFormatter.parse(date);
-            return true;
-        } catch (ParseException e) {
-            return false;
-        }
-    }
 }
