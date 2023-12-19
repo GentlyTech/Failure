@@ -23,7 +23,8 @@
                 app:enterAnim="@anim/pop_in"
                 app:exitAnim="@anim/pop_out"
                 app:popEnterAnim="@anim/pop_in"
-                app:popExitAnim="@anim/pop_out" />
+                app:popExitAnim="@anim/pop_out"
+                app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
             android:id="@+id/addCourseFragment"
