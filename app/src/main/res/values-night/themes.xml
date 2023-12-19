@@ -3,7 +3,10 @@
     <style name="Theme.Failure" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/darkerNiceBlue</item>
         <item name="colorSecondary">@color/gray</item>
+
+        <item name="android:windowBackground">@color/notQuiteBlack</item>
         <item name="android:statusBarColor">?attr/colorPrimary</item>
+
         <item name="vectorImageFill">@color/white</item>
         <item name="materialButtonStyle">@style/customButton</item>
     </style>
