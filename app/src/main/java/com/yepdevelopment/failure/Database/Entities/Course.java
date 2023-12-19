@@ -1,13 +1,20 @@
 package com.yepdevelopment.failure.Database.Entities;
 
+import static com.yepdevelopment.failure.Globals.DATE_FORMAT;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
+import java.util.logging.SimpleFormatter;
 
 
 @Entity
@@ -68,7 +75,9 @@ public class Course {
     }
 
     public static Course generateRandom() {
-        return new Course(UUID.randomUUID().toString(), UUID.randomUUID().toString(), UUID.randomUUID().toString(), UUID.randomUUID().toString(), (float) (Math.random() * 100));
+        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT, Locale.CANADA);
+        String date = formatter.format(Calendar.getInstance().getTime());
+        return new Course(UUID.randomUUID().toString(), UUID.randomUUID().toString(), date, date, (float) (Math.random() * 100));
     }
 
     public String getId() {
