@@ -47,11 +47,12 @@ public class Submittable {
         this.achievedGrade = achievedGrade;
     }
 
+    @NonNull
     public String getId() {
         return this.id;
     }
 
-    public void setId(String id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 
