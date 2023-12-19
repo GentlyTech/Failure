@@ -1,7 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Fragments.AddSubmittableFragment"
-        android:id="@+id/addSubmittableLayoutRoot" />
+        android:id="@+id/addSubmittableLayoutRoot" >
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/editTextLayoutSubmittableName"
+            android:hint="@string/editTextSubmittableName_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextSubmittableName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/editTextLayoutSubmittableDescription"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutSubmittableName"
+            android:layout_marginTop="16dp"
+            android:hint="@string/editTextSubmittableDescription_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextSubmittableDescription" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/editTextLayoutSubmittableAssignDate"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutSubmittableDescription"
+            android:layout_marginTop="16dp"
+            android:hint="@string/editTextSubmittableAssignDate_hint"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/baseline_calendar_month_24"
+            app:helperText="@string/dateFormatHelperText">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextSubmittableAssignDate"
+                android:inputType="datetime|date" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/editTextLayoutSubmittableDueDate"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutSubmittableAssignDate"
+            android:layout_marginTop="16dp"
+            android:hint="@string/editTextSubmittableDueDate_hint"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/baseline_calendar_month_24"
+            app:helperText="@string/dateFormatHelperText">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextSubmittableDueDate"
+                android:inputType="datetime|date" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/editTextLayoutSubmittableWeight"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutSubmittableDueDate"
+            android:layout_marginTop="16dp"
+            android:hint="@string/editTextSubmittableWeight_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextSubmittableWeight"
+                android:inputType="number|numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/editTextLayoutSubmittableMaxGrade"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutSubmittableWeight"
+            android:layout_marginTop="16dp"
+            app:helperText="@string/editTextSubmittableMaxGrade_helperText"
+            android:hint="@string/editTextSubmittableMaxGrade_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextSubmittableMaxGrade"
+                android:inputType="number|numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutSubmittableMaxGrade"
+            android:id="@+id/addSubmittableButtonLayout"
+            android:layout_marginTop="16dp">
+
+        <Button
+                android:text="@string/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonCancelAddSubmittable"
+                android:layout_weight="1"
+                style="@style/secondaryButton" />
+
+        <View
+                android:id="@+id/divider"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25" />
+
+        <Button
+                android:text="@string/create"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonConfirmAddSubmittable"
+                android:layout_weight="1" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,7 @@
     <string name="done">Done</string>
     <string name="delete">Delete</string>
     <string name="submittables">Submittables</string>
+    <string name="dateFormatHelperText">Dates are formatted as yyyy/mm/dd.</string>
 
     <!-- Fragment Titles -->
     <string name="aboutFragmentTitle">About %1$s</string>
@@ -30,10 +31,18 @@
     <string name="editTextCourseEndDate_hint">End Date</string>
     <string name="editTextCourseMinimumGrade_hint">Passing Grade (Optional)</string>
     <string name="editTextCourseMinimumGrade_helperText">The minimum grade needed in this course to pass; defaults to 50 if left blank.</string>
-    <string name="dateFormatHelperText">Dates are formatted as yyyy/mm/dd.</string>
     <string name="editTextCourseName_errorHint">Invalid Name</string>
     <string name="editTextCourseStartDate_errorHint">Invalid Start Date</string>
     <string name="editTextCourseEndDate_errorHint">Invalid End Date</string>
     <string name="buttonDebugAddCourse_label">Create Sample Course</string>
+
+    <!-- Add Submittable Fragment -->
+    <string name="editTextSubmittableName_hint">Name</string>
+    <string name="editTextSubmittableDescription_hint">Description (Optional)</string>
+    <string name="editTextSubmittableAssignDate_hint">Date Assigned</string>
+    <string name="editTextSubmittableDueDate_hint">Due Date</string>
+    <string name="editTextSubmittableWeight_hint">Weight</string>
+    <string name="editTextSubmittableMaxGrade_hint">Max Grade</string>
+    <string name="editTextSubmittableMaxGrade_helperText">How many points this assignment is out of.</string>
 
 </resources>
