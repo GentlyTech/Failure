@@ -40,8 +40,6 @@ public class CourseOverviewFragment extends Fragment {
 
         course = mainViewModel.getSelectedCourse().getValue();
         if (course == null) navController.popBackStack();
-
-        requireActivity().setTitle(getString(R.string.courseOverviewFragmentTitle, course.getName()));
     }
 
     @Override
@@ -57,6 +55,8 @@ public class CourseOverviewFragment extends Fragment {
         binding.includeCourseCardInOverview.textCourseCardCourseSubject.setText(course.getSubject());
         binding.includeCourseCardInOverview.textCourseCardCourseGrade.setText(String.format("%s%%", course.calculateGrade()));
         binding.includeCourseCardInOverview.imageCourseCardArrow.setVisibility(View.GONE);
+
+        binding.floatingActionButtonAddSubmittable.setOnClickListener(ignored -> navController.navigate(CourseOverviewFragmentDirections.actionCourseOverviewFragmentToAddSubmittableFragment()));
 
         MenuHost menuHost = requireActivity();
         menuHost.addMenuProvider(new MenuProvider() {
@@ -76,5 +76,11 @@ public class CourseOverviewFragment extends Fragment {
                 return false;
             }
         }, getViewLifecycleOwner()); // FIXME does not remove menu from toolbar when deleting a course
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        requireActivity().setTitle(getString(R.string.courseOverviewFragmentTitle, course.getName()));
     }
 }

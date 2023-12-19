@@ -1,15 +1,14 @@
 package com.yepdevelopment.failure.Fragments;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.yepdevelopment.failure.Adapters.ContributorAdapter;
 import com.yepdevelopment.failure.R;
@@ -22,11 +21,10 @@ public class AboutFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requireActivity().setTitle(getString(R.string.aboutFragmentTitle, getString(R.string.appName)));
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentAboutBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -36,5 +34,11 @@ public class AboutFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         binding.recyclerViewContributors.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.recyclerViewContributors.setAdapter(new ContributorAdapter(requireContext(), ResourceManipulator.getContributors(requireContext())));
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        requireActivity().setTitle(getString(R.string.aboutFragmentTitle, getString(R.string.appName)));
     }
 }
