@@ -15,6 +15,8 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.yepdevelopment.failure.Database.AppDatabase;
+import com.yepdevelopment.failure.Database.Entities.Course;
 import com.yepdevelopment.failure.R;
 import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
 
@@ -25,12 +27,14 @@ import java.util.Locale;
 public class AddCourseFragment extends Fragment {
     MainViewModel mainViewModel;
     NavController navController;
+    AppDatabase database;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         navController = NavHostFragment.findNavController(this);
+        database = AppDatabase.getInstance(requireContext());
     }
 
     @Override
@@ -66,6 +70,12 @@ public class AddCourseFragment extends Fragment {
             return null;
         }).show(getParentFragmentManager(), null));
 
+        buttonConfirmAddCourse.setOnClickListener(this::createCourse);
         buttonCancelAddCourse.setOnClickListener(button -> navController.popBackStack());
+    }
+
+    public void createCourse(View button) {
+        Course course = new Course();
+        //database.courseDao().insertAll();
     }
 }
