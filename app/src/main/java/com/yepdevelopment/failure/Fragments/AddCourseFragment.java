@@ -1,7 +1,6 @@
 package com.yepdevelopment.failure.Fragments;
 
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +21,9 @@ import com.yepdevelopment.failure.databinding.FragmentAddCourseBinding;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class AddCourseFragment extends Fragment {
     MainViewModel mainViewModel;
@@ -77,6 +79,9 @@ public class AddCourseFragment extends Fragment {
 
         Course course = new Course(courseName, courseSubject, courseStartDate, courseEndDate, courseMinimumGrade);
 
-        database.courseDao().insertAll(course);
+        Completable.fromRunnable(() -> {
+            database.courseDao().insertAll(course).subscribe();
+        }).subscribeOn(Schedulers.io()).subscribe();
+
     }
 }
