@@ -1,5 +1,7 @@
 package com.yepdevelopment.failure.Validators;
 
+import static com.yepdevelopment.failure.Globals.DATE_FORMAT;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
@@ -19,7 +21,7 @@ public class AddCourseValidator {
     public static boolean isDateValid(String date) {
         if (date == null) return false;
 
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd", Locale.CANADA);
+        SimpleDateFormat dateFormatter = new SimpleDateFormat(DATE_FORMAT, Locale.CANADA);
         dateFormatter.setLenient(false);
 
         try {
