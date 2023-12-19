@@ -18,9 +18,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.yepdevelopment.failure.Database.AppDatabase;
 import com.yepdevelopment.failure.Database.Entities.Course;
 import com.yepdevelopment.failure.R;
-import com.yepdevelopment.failure.ViewModels.MainViewModel;
-import com.yepdevelopment.failure.databinding.FragmentAddCourseBinding;
 import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
+import com.yepdevelopment.failure.databinding.FragmentAddCourseBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -29,8 +28,8 @@ import java.util.Locale;
 public class AddCourseFragment extends Fragment {
     MainViewModel mainViewModel;
     NavController navController;
-    private FragmentAddCourseBinding binding;
     AppDatabase database;
+    private FragmentAddCourseBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,33 +48,26 @@ public class AddCourseFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Button buttonCancelAddCourse = view.findViewById(R.id.buttonCancelAddCourse);
-        Button buttonConfirmAddCourse = view.findViewById(R.id.buttonConfirmAddCourse);
-        TextInputEditText editTextCourseStartDate = view.findViewById(R.id.editTextCourseStartDate);
-        TextInputEditText editTextCourseEndDate = view.findViewById(R.id.editTextCourseEndDate);
-        TextInputLayout editTextLayoutCourseStartDate = view.findViewById(R.id.editTextLayoutCourseStartDate);
-        TextInputLayout editTextLayoutCourseEndDate = view.findViewById(R.id.editTextLayoutCourseEndDate);
-
         SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd", Locale.CANADA); // TODO maybe make locale dynamic
 
-        editTextLayoutCourseStartDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
+        binding.editTextLayoutCourseStartDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
             Calendar calendar = Calendar.getInstance();
             calendar.set(year, month, day);
 
-            editTextCourseStartDate.setText(dateFormatter.format(calendar.getTime()));
+            binding.editTextCourseStartDate.setText(dateFormatter.format(calendar.getTime()));
             return null;
         }).show(getParentFragmentManager(), null));
 
-        editTextLayoutCourseEndDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
+        binding.editTextLayoutCourseEndDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
             Calendar calendar = Calendar.getInstance();
             calendar.set(year, month, day);
 
-            editTextCourseEndDate.setText(dateFormatter.format(calendar.getTime()));
+            binding.editTextCourseEndDate.setText(dateFormatter.format(calendar.getTime()));
             return null;
         }).show(getParentFragmentManager(), null));
 
-        buttonConfirmAddCourse.setOnClickListener(this::createCourse);
-        buttonCancelAddCourse.setOnClickListener(button -> navController.popBackStack());
+        binding.buttonConfirmAddCourse.setOnClickListener(this::createCourse);
+        binding.buttonCancelAddCourse.setOnClickListener(button -> navController.popBackStack());
     }
 
     public void createCourse(View button) {

@@ -19,14 +19,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.yepdevelopment.failure.Database.AppDatabase;
 import com.yepdevelopment.failure.R;
 import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
+import com.yepdevelopment.failure.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
     NavController navController;
     MainViewModel mainViewModel;
     AppDatabase database;
-
-    Group groupCourseListEmptyText;
-    RecyclerView recyclerViewCourseList;
+    private FragmentHomeBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,16 +38,13 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        FloatingActionButton floatingActionButtonAddCourse = view.findViewById(R.id.floatingActionButtonAddCourse);
-        groupCourseListEmptyText = view.findViewById(R.id.groupCourseListEmptyText);
-        recyclerViewCourseList = view.findViewById(R.id.recyclerViewCourseList);
-
-        recyclerViewCourseList.setLayoutManager(new LinearLayoutManager(requireContext()));
+        binding.recyclerViewCourseList.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         database.courseDao().getAll().observe(getViewLifecycleOwner(), (courses -> {
             if (courses != null) {
@@ -59,18 +55,18 @@ public class HomeFragment extends Fragment {
             setCourseListVisibility(false);
         }));
 
-        floatingActionButtonAddCourse.setOnClickListener(ignored -> navController.navigate(HomeFragmentDirections.actionHomeFragmentToAddCourseFragment()));
+        binding.floatingActionButtonAddCourse.setOnClickListener(ignored -> navController.navigate(HomeFragmentDirections.actionHomeFragmentToAddCourseFragment()));
     }
 
     public void setCourseListVisibility(boolean visible) {
         if (visible) {
-            groupCourseListEmptyText.setVisibility(View.GONE);
-            recyclerViewCourseList.setVisibility(View.VISIBLE);
+            binding.groupCourseListEmptyText.setVisibility(View.GONE);
+            binding.recyclerViewCourseList.setVisibility(View.VISIBLE);
             return;
         }
 
-        groupCourseListEmptyText.setVisibility(View.VISIBLE);
-        recyclerViewCourseList.setVisibility(View.GONE);
+        binding.groupCourseListEmptyText.setVisibility(View.VISIBLE);
+        binding.recyclerViewCourseList.setVisibility(View.GONE);
     }
 
 }

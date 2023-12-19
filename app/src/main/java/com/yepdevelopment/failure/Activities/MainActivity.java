@@ -12,15 +12,19 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.yepdevelopment.failure.R;
 import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
+import com.yepdevelopment.failure.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     MainViewModel mainViewModel;
     NavController navController;
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.navHostMainActivity);
@@ -28,9 +32,7 @@ public class MainActivity extends AppCompatActivity {
         navController = navHostFragment.getNavController();
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        Toolbar toolbar = findViewById(R.id.toolbarMainActivity);
-        if (toolbar == null) return;
-        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.toolbarMainActivity, navController, appBarConfiguration);
     }
 
 }
