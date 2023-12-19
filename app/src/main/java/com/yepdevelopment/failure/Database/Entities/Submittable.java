@@ -61,6 +61,19 @@ public class Submittable {
     }
 
     @Ignore
+    public Submittable(String name, String description, String assignDate, String dueDate, String associatedCourseId, float weight, float maxGrade, float achievedGrade) {
+        this.id = UUID.randomUUID().toString();
+        this.name = name;
+        this.description = description;
+        this.assignDate = assignDate;
+        this.dueDate = dueDate;
+        this.associatedCourseId = associatedCourseId;
+        this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
+        this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
+        this.achievedGrade = achievedGrade;
+    }
+
+    @Ignore
     public Submittable(String name, String description, String assignDate, String dueDate, float weight, float maxGrade) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
@@ -68,6 +81,19 @@ public class Submittable {
         this.assignDate = assignDate;
         this.dueDate = dueDate;
         this.associatedCourseId = "";
+        this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
+        this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
+        this.achievedGrade = 0.0f;
+    }
+
+    @Ignore
+    public Submittable(String name, String description, String assignDate, String dueDate, String associatedCourseId, float weight, float maxGrade) {
+        this.id = UUID.randomUUID().toString();
+        this.name = name;
+        this.description = description;
+        this.assignDate = assignDate;
+        this.dueDate = dueDate;
+        this.associatedCourseId = associatedCourseId;
         this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
         this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
         this.achievedGrade = 0.0f;

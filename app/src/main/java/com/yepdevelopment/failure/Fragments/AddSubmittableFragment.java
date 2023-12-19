@@ -10,16 +10,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.yepdevelopment.failure.Database.AppDatabase;
+import com.yepdevelopment.failure.Database.Entities.Course;
 import com.yepdevelopment.failure.Database.Entities.Submittable;
 import com.yepdevelopment.failure.R;
 import com.yepdevelopment.failure.Utils.Android.Parsing;
 import com.yepdevelopment.failure.Utils.JavaRX.Async;
 import com.yepdevelopment.failure.Validators.AddSubmittableValidator;
 import com.yepdevelopment.failure.Validators.CommonValidator;
+import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
 import com.yepdevelopment.failure.databinding.FragmentAddSubmittableBinding;
 
 import java.text.SimpleDateFormat;
@@ -29,6 +32,8 @@ import java.util.Locale;
 public class AddSubmittableFragment extends Fragment {
     AppDatabase database;
     NavController navController;
+    MainViewModel mainViewModel;
+    Course course;
     private FragmentAddSubmittableBinding binding;
 
     @Override
@@ -36,6 +41,10 @@ public class AddSubmittableFragment extends Fragment {
         super.onCreate(savedInstanceState);
         database = AppDatabase.getInstance(requireContext());
         navController = NavHostFragment.findNavController(this);
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+
+        course = mainViewModel.getSelectedCourse().getValue();
+        if (course == null) navController.popBackStack();
     }
 
     @Override
@@ -107,7 +116,7 @@ public class AddSubmittableFragment extends Fragment {
 
         if (hasError) return;
 
-        Submittable submittable = new Submittable(submittableName, submittableDescription, submittableAssignDate, submittableDueDate, submittableWeight, submittableMaxGrade);
+        Submittable submittable = new Submittable(submittableName, submittableDescription, submittableAssignDate, submittableDueDate, course.getId(), submittableWeight, submittableMaxGrade);
 
         Async.run(database.submittableDao().insertAll(submittable));
 
