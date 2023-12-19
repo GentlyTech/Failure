@@ -41,6 +41,16 @@ public class AddCourseFragment extends Fragment {
         TextInputLayout editTextLayoutCourseStartDate = view.findViewById(R.id.editTextLayoutCourseStartDate);
         TextInputLayout editTextLayoutCourseEndDate = view.findViewById(R.id.editTextLayoutCourseEndDate);
 
+        editTextLayoutCourseStartDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
+
+            return null;
+        }).show(getParentFragmentManager(), null));
+
+        editTextLayoutCourseEndDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
+
+            return null;
+        }).show(getParentFragmentManager(), null));
+
         buttonCancelAddCourse.setOnClickListener(button -> navController.popBackStack());
     }
 }
