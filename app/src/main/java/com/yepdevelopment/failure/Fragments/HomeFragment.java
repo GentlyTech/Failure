@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.yepdevelopment.failure.Adapters.CourseAdapter;
 import com.yepdevelopment.failure.Database.AppDatabase;
 import com.yepdevelopment.failure.R;
 import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
@@ -49,7 +50,7 @@ public class HomeFragment extends Fragment {
         database.courseDao().getAll().observe(getViewLifecycleOwner(), (courses -> {
             if (courses != null) {
                 setCourseListVisibility(!courses.isEmpty());
-                //recyclerViewCourseList.setAdapter();
+                binding.recyclerViewCourseList.setAdapter(new CourseAdapter(requireContext(), courses));
                 return;
             }
             setCourseListVisibility(false);
