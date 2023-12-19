@@ -16,13 +16,13 @@
                 app:enterAnim="@anim/pop_in"
                 app:exitAnim="@anim/pop_out"
                 app:popExitAnim="@anim/pop_out"
-                app:popEnterAnim="@anim/pop_in" />
+                app:popEnterAnim="@anim/pop_back_in" />
         <action
                 android:id="@+id/action_homeFragment_to_courseOverviewFragment"
                 app:destination="@id/courseOverviewFragment"
                 app:enterAnim="@anim/pop_in"
                 app:exitAnim="@anim/pop_out"
-                app:popEnterAnim="@anim/pop_in"
+                app:popEnterAnim="@anim/pop_back_in"
                 app:popExitAnim="@anim/pop_out"
                 app:popUpTo="@id/homeFragment" />
         <action
@@ -30,7 +30,7 @@
                 app:destination="@id/aboutFragment"
                 app:enterAnim="@anim/pop_in"
                 app:exitAnim="@anim/pop_out"
-                app:popEnterAnim="@anim/pop_in"
+                app:popEnterAnim="@anim/pop_back_in"
                 app:popExitAnim="@anim/pop_out" />
     </fragment>
     <fragment
@@ -46,16 +46,16 @@
         <action
                 android:id="@+id/action_courseOverviewFragment_to_homeFragment"
                 app:destination="@id/homeFragment"
-                app:enterAnim="@anim/pop_in"
-                app:exitAnim="@anim/fade_out"
-                app:popExitAnim="@anim/fade_out"
-                app:popEnterAnim="@anim/pop_in" />
+                app:enterAnim="@anim/pop_back_in"
+                app:exitAnim="@anim/pop_out"
+                app:popExitAnim="@anim/pop_out"
+                app:popEnterAnim="@anim/pop_back_in" />
         <action
                 android:id="@+id/action_courseOverviewFragment_to_addSubmittableFragment"
                 app:destination="@id/addSubmittableFragment"
                 app:enterAnim="@anim/pop_in"
                 app:exitAnim="@anim/pop_out"
-                app:popEnterAnim="@anim/pop_in"
+                app:popEnterAnim="@anim/pop_back_in"
                 app:popExitAnim="@anim/pop_out" />
     </fragment>
     <fragment
