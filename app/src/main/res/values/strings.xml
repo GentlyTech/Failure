@@ -21,6 +21,7 @@
     <string name="editTextCourseStartDate_hint">Start Date</string>
     <string name="editTextCourseEndDate_hint">End Date</string>
     <string name="editTextCourseMinimumGrade_hint">Passing Grade (Optional)</string>
-    <string name="editTextCourseMinimumGrade_helperText">The minimum grade needed in this course to pass. Defaults to 50 if left blank.</string>
+    <string name="editTextCourseMinimumGrade_helperText">The minimum grade needed in this course to pass; defaults to 50 if left blank.</string>
+    <string name="dateFormatHelperText">Dates are formatted as yyyy/mm/dd.</string>
 
 </resources>

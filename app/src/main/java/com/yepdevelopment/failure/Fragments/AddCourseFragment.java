@@ -13,9 +13,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.yepdevelopment.failure.R;
 import com.yepdevelopment.failure.ViewModels.MainViewModel;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class AddCourseFragment extends Fragment {
     MainViewModel mainViewModel;
@@ -38,16 +43,26 @@ public class AddCourseFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Button buttonCancelAddCourse = view.findViewById(R.id.buttonCancelAddCourse);
         Button buttonConfirmAddCourse = view.findViewById(R.id.buttonConfirmAddCourse);
+        TextInputEditText editTextCourseStartDate = view.findViewById(R.id.editTextCourseStartDate);
+        TextInputEditText editTextCourseEndDate = view.findViewById(R.id.editTextCourseEndDate);
         TextInputLayout editTextLayoutCourseStartDate = view.findViewById(R.id.editTextLayoutCourseStartDate);
         TextInputLayout editTextLayoutCourseEndDate = view.findViewById(R.id.editTextLayoutCourseEndDate);
 
-        editTextLayoutCourseStartDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd", Locale.CANADA);
 
+        editTextLayoutCourseStartDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(year, month, day);
+
+            editTextCourseStartDate.setText(dateFormatter.format(calendar.getTime()));
             return null;
         }).show(getParentFragmentManager(), null));
 
         editTextLayoutCourseEndDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(year, month, day);
 
+            editTextCourseEndDate.setText(dateFormatter.format(calendar.getTime()));
             return null;
         }).show(getParentFragmentManager(), null));
 

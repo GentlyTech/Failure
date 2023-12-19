@@ -48,7 +48,8 @@
             android:layout_marginTop="16dp"
             android:hint="@string/editTextCourseStartDate_hint"
             app:endIconMode="custom"
-            app:endIconDrawable="@drawable/baseline_calendar_month_24">
+            app:endIconDrawable="@drawable/baseline_calendar_month_24"
+            app:helperText="@string/dateFormatHelperText">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -67,7 +68,8 @@
             android:layout_marginTop="16dp"
             android:hint="@string/editTextCourseEndDate_hint"
             app:endIconMode="custom"
-            app:endIconDrawable="@drawable/baseline_calendar_month_24">
+            app:endIconDrawable="@drawable/baseline_calendar_month_24"
+            app:helperText="@string/dateFormatHelperText">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
