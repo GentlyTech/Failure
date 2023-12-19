@@ -67,6 +67,10 @@ public class Course {
         this.minimumGrade = 50.0f;
     }
 
+    public static Course generateRandom() {
+        return new Course(UUID.randomUUID().toString(), UUID.randomUUID().toString(), UUID.randomUUID().toString(), UUID.randomUUID().toString(), (float) (Math.random() * 100));
+    }
+
     public String getId() {
         return this.id;
     }
@@ -143,7 +147,7 @@ public class Course {
 
     public float calculateGrade() {
         // TODO implement calculateGrade()
-        return -1.0f;
+        return 0.0f;
     }
 
 

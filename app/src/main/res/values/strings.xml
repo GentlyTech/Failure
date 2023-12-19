@@ -34,5 +34,6 @@
     <string name="editTextCourseName_errorHint">Invalid Name</string>
     <string name="editTextCourseStartDate_errorHint">Invalid Start Date</string>
     <string name="editTextCourseEndDate_errorHint">Invalid End Date</string>
+    <string name="buttonDebugAddCourse_label">Create Sample Course</string>
 
 </resources>

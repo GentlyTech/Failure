@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.yepdevelopment.failure.BuildConfig;
 import com.yepdevelopment.failure.Database.AppDatabase;
 import com.yepdevelopment.failure.Database.Entities.Course;
 import com.yepdevelopment.failure.R;
@@ -66,6 +67,13 @@ public class AddCourseFragment extends Fragment {
             return null;
         }).show(getParentFragmentManager(), null));
 
+        if (BuildConfig.DEBUG) {
+            binding.groupAddCourseDebugItems.setVisibility(View.VISIBLE);
+        } else {
+            binding.groupAddCourseDebugItems.setVisibility(View.GONE);
+        }
+
+        binding.buttonDebugAddCourse.setOnClickListener(this::createSampleCourse);
         binding.buttonConfirmAddCourse.setOnClickListener(this::createCourse);
         binding.buttonCancelAddCourse.setOnClickListener(button -> navController.popBackStack());
     }
@@ -106,6 +114,12 @@ public class AddCourseFragment extends Fragment {
 
         Async.run(database.courseDao().insertAll(course));
 
+        navController.popBackStack();
+    }
+
+    public void createSampleCourse(View button) {
+        Course sampleCourse = Course.generateRandom();
+        Async.run(database.courseDao().insertAll(sampleCourse));
         navController.popBackStack();
     }
 }
