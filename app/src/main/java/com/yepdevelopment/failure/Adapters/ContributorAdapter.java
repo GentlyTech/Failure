@@ -39,6 +39,7 @@ public class ContributorAdapter extends RecyclerView.Adapter<GenericViewHolder<C
     @Override
     public void onBindViewHolder(@NonNull GenericViewHolder<ComponentContributorEntryBinding> holder, int position) {
         Contributor contributor = contributors.get(position);
+        if (contributor == null) return;
 
         ComponentContributorEntryBinding binding = holder.getBinding();
         binding.textContributorName.setText(contributor.getName());
