@@ -8,8 +8,9 @@
     <string name="done">Done</string>
 
     <!-- Fragment Titles -->
-    <string name="homeFragmentTitle">Courses</string>
     <string name="addCourseFragmentTitle">Add course</string>
+    <string name="courseOverviewFragmentTitle">Course Overview</string>
+    <string name="homeFragmentTitle">Courses</string>
 
     <!-- Home Fragment -->
     <string name="textCourseListEmptyHintHeader_text">No courses</string>

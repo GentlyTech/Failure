@@ -17,10 +17,22 @@
                 app:exitAnim="@anim/pop_out"
                 app:popExitAnim="@anim/pop_out"
                 app:popEnterAnim="@anim/pop_in" />
+        <action
+                android:id="@+id/action_homeFragment_to_courseOverviewFragment"
+                app:destination="@id/courseOverviewFragment"
+                app:enterAnim="@anim/pop_in"
+                app:exitAnim="@anim/pop_out"
+                app:popEnterAnim="@anim/pop_in"
+                app:popExitAnim="@anim/pop_out" />
     </fragment>
     <fragment
             android:id="@+id/addCourseFragment"
             android:name="com.yepdevelopment.failure.Fragments.AddCourseFragment"
             android:label="@string/addCourseFragmentTitle"
             tools:layout="@layout/fragment_add_course" />
+    <fragment
+            android:id="@+id/courseOverviewFragment"
+            android:name="com.yepdevelopment.failure.Fragments.CourseOverviewFragment"
+            android:label="@string/courseOverviewFragmentTitle"
+            tools:layout="@layout/fragment_course_overview" />
 </navigation>
