@@ -9,13 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yepdevelopment.failure.Database.Entities.Contributor;
-import com.yepdevelopment.failure.ViewHolders.ContributorViewHolder;
+import com.yepdevelopment.failure.ViewHolders.GenericViewHolder;
 import com.yepdevelopment.failure.databinding.ComponentContributorEntryBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContributorAdapter extends RecyclerView.Adapter<ContributorViewHolder> {
+public class ContributorAdapter extends RecyclerView.Adapter<GenericViewHolder<ComponentContributorEntryBinding>> {
     Context context;
     List<Contributor> contributors;
 
@@ -30,14 +30,14 @@ public class ContributorAdapter extends RecyclerView.Adapter<ContributorViewHold
 
     @NonNull
     @Override
-    public ContributorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GenericViewHolder<ComponentContributorEntryBinding> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         ComponentContributorEntryBinding binding = ComponentContributorEntryBinding.inflate(layoutInflater, parent, false);
-        return new ContributorViewHolder(binding);
+        return new GenericViewHolder<>(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ContributorViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GenericViewHolder<ComponentContributorEntryBinding> holder, int position) {
         Contributor contributor = contributors.get(position);
 
         ComponentContributorEntryBinding binding = holder.getBinding();
