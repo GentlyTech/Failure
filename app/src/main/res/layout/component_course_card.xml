@@ -17,7 +17,8 @@
             android:id="@+id/courseCard"
             app:cardCornerRadius="10dp"
             android:clickable="true"
-            android:foreground="?attr/selectableItemBackground">
+            android:foreground="?attr/selectableItemBackground"
+            style="@style/customCard">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
