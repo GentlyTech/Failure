@@ -18,6 +18,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.yepdevelopment.failure.Database.AppDatabase;
 import com.yepdevelopment.failure.Database.Entities.Course;
 import com.yepdevelopment.failure.R;
+import com.yepdevelopment.failure.ViewModels.MainViewModel;
+import com.yepdevelopment.failure.databinding.FragmentAddCourseBinding;
 import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
 
 import java.text.SimpleDateFormat;
@@ -27,6 +29,7 @@ import java.util.Locale;
 public class AddCourseFragment extends Fragment {
     MainViewModel mainViewModel;
     NavController navController;
+    private FragmentAddCourseBinding binding;
     AppDatabase database;
 
     @Override
@@ -40,7 +43,8 @@ public class AddCourseFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_add_course, container, false);
+        binding = FragmentAddCourseBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
