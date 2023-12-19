@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.yepdevelopment.failure.Database.Entities.Submittable;
 import com.yepdevelopment.failure.ViewHolders.GenericViewHolder;
-import com.yepdevelopment.failure.databinding.ComponentCourseCardBinding;
 import com.yepdevelopment.failure.databinding.ComponentSubmittableCardBinding;
 
 import java.util.ArrayList;
@@ -24,8 +23,7 @@ public class SubmittableAdapter extends RecyclerView.Adapter<GenericViewHolder<C
 
         if (submittables == null) {
             this.submittables = new ArrayList<>(0);
-        }
-        else {
+        } else {
             this.submittables = submittables;
         }
     }
@@ -42,6 +40,11 @@ public class SubmittableAdapter extends RecyclerView.Adapter<GenericViewHolder<C
     public void onBindViewHolder(@NonNull GenericViewHolder<ComponentSubmittableCardBinding> holder, int position) {
         Submittable submittable = submittables.get(position);
         if (submittable == null) return;
+
+        ComponentSubmittableCardBinding binding = holder.getBinding();
+        binding.textSubmittableCardName.setText(submittable.getName());
+        binding.textSubmittableCardDescription.setText(submittable.getDescription());
+        binding.textSubmittableCardMinimumGrade.setText(String.format("%s%%", submittable.calculateGrade()));
     }
 
     @Override

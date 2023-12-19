@@ -186,4 +186,9 @@ public class Submittable {
         this.achievedGrade = achievedGrade;
     }
 
+    public float calculateGrade() {
+        // TODO implement calculateGrade()
+        return 0.0f;
+    }
+
 }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/submittableCardComponentLayoutRoot">
 
     <androidx.cardview.widget.CardView
@@ -21,6 +22,69 @@
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/submittableCardLayout"/>
+                android:id="@+id/submittableCardLayout">
+
+            <ImageView
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:id="@+id/imageSubmittableCard"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    app:srcCompat="@drawable/baseline_assignment_24" />
+
+            <TextView
+                    android:text="Assignment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textSubmittableCardName"
+                    app:layout_constraintStart_toEndOf="@+id/imageSubmittableCard"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toTopOf="@+id/textSubmittableCardDescription"
+                    android:layout_marginTop="16dp" />
+
+            <TextView
+                    android:text="Description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textSubmittableCardDescription"
+                    app:layout_constraintStart_toEndOf="@+id/imageSubmittableCard"
+                    app:layout_constraintTop_toBottomOf="@+id/textSubmittableCardName"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="16dp" />
+
+            <androidx.constraintlayout.widget.Barrier
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:barrierDirection="right"
+                    app:constraint_referenced_ids="textSubmittableCardDescription,textSubmittableCardName"
+                    android:id="@+id/barrier"
+                    app:barrierMargin="16dp" />
+
+            <TextView
+                    android:text="50%"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:id="@+id/textSubmittableCardMinimumGrade"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginEnd="16dp"
+                    android:textSize="24sp"
+                    android:gravity="center"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintStart_toEndOf="@+id/barrier"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
+                    app:autoSizeMaxTextSize="24sp"
+                    android:layout_marginStart="16dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
