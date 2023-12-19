@@ -1,10 +1,10 @@
 package com.yepdevelopment.failure.Fragments;
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,11 +13,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.yepdevelopment.failure.Database.AppDatabase;
 import com.yepdevelopment.failure.Database.Entities.Course;
-import com.yepdevelopment.failure.R;
+import com.yepdevelopment.failure.Utils.Android.Parsing;
 import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
 import com.yepdevelopment.failure.databinding.FragmentAddCourseBinding;
 
@@ -71,7 +69,14 @@ public class AddCourseFragment extends Fragment {
     }
 
     public void createCourse(View button) {
-        Course course = new Course();
-        //database.courseDao().insertAll();
+        String courseName = Parsing.editableToString(binding.editTextCourseName.getText());
+        String courseSubject = Parsing.editableToString(binding.editTextCourseSubject.getText());
+        String courseStartDate = Parsing.editableToString(binding.editTextCourseStartDate.getText());
+        String courseEndDate = Parsing.editableToString(binding.editTextCourseEndDate.getText());
+        float courseMinimumGrade = Parsing.editableToFloat(binding.editTextCourseMinimumGrade.getText());
+
+        Course course = new Course(courseName, courseSubject, courseStartDate, courseEndDate, courseMinimumGrade);
+
+        database.courseDao().insertAll(course);
     }
 }

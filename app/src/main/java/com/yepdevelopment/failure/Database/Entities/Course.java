@@ -38,7 +38,7 @@ public class Course {
         this.subject = subject;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.minimumGrade = minimumGrade;
+        this.minimumGrade = minimumGrade >= 0.0f ? minimumGrade : 50.0f;
     }
 
     /**
@@ -51,7 +51,7 @@ public class Course {
         this.subject = subject;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.minimumGrade = minimumGrade;
+        this.minimumGrade = minimumGrade >= 0.0f ? minimumGrade : 50.0f;
     }
 
     /**
@@ -64,7 +64,7 @@ public class Course {
         this.subject = "";
         this.startDate = "";
         this.endDate = "";
-        this.minimumGrade = 50;
+        this.minimumGrade = 50.0f;
     }
 
     public String getId() {
