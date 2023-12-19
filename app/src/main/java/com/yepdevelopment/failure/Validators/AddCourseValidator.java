@@ -16,10 +16,6 @@ public class AddCourseValidator {
         return courseName != null && !courseName.isEmpty();
     }
 
-    public static boolean isCourseSubjectValid(String courseSubject) {
-        return courseSubject != null && !courseSubject.isEmpty();
-    }
-
     public static boolean isDateValid(String date) {
         if (date == null) return false;
 

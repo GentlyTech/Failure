@@ -14,7 +14,9 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.yepdevelopment.failure.Database.AppDatabase;
 import com.yepdevelopment.failure.Database.Entities.Course;
+import com.yepdevelopment.failure.R;
 import com.yepdevelopment.failure.Utils.Android.Parsing;
+import com.yepdevelopment.failure.Validators.AddCourseValidator;
 import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
 import com.yepdevelopment.failure.databinding.FragmentAddCourseBinding;
 
@@ -70,12 +72,37 @@ public class AddCourseFragment extends Fragment {
         binding.buttonCancelAddCourse.setOnClickListener(button -> navController.popBackStack());
     }
 
+    public void clearErrors() {
+        binding.editTextLayoutCourseName.setError(null);
+        binding.editTextLayoutCourseStartDate.setError(null);
+        binding.editTextLayoutCourseEndDate.setError(null);
+    }
+
     public void createCourse(View button) {
+        clearErrors();
+
         String courseName = Parsing.editableToString(binding.editTextCourseName.getText());
         String courseSubject = Parsing.editableToString(binding.editTextCourseSubject.getText());
         String courseStartDate = Parsing.editableToString(binding.editTextCourseStartDate.getText());
         String courseEndDate = Parsing.editableToString(binding.editTextCourseEndDate.getText());
         float courseMinimumGrade = Parsing.editableToFloat(binding.editTextCourseMinimumGrade.getText());
+
+        boolean hasError = false;
+
+        if (!AddCourseValidator.isCourseNameValid(courseName)) {
+            binding.editTextLayoutCourseName.setError(getString(R.string.editTextCourseName_errorHint));
+            hasError = true;
+        }
+        if (!AddCourseValidator.isDateValid(courseStartDate)) {
+            binding.editTextLayoutCourseStartDate.setError(getString(R.string.editTextCourseStartDate_errorHint));
+            hasError = true;
+        }
+        if (!AddCourseValidator.isCourseNameValid(courseEndDate)) {
+            binding.editTextLayoutCourseEndDate.setError(getString(R.string.editTextCourseEndDate_errorHint));
+            hasError = true;
+        }
+
+        if (hasError) return;
 
         Course course = new Course(courseName, courseSubject, courseStartDate, courseEndDate, courseMinimumGrade);
 
@@ -83,5 +110,6 @@ public class AddCourseFragment extends Fragment {
             database.courseDao().insertAll(course).subscribe();
         }).subscribeOn(Schedulers.io()).subscribe();
 
+        navController.popBackStack();
     }
 }

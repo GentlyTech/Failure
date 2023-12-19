@@ -17,11 +17,14 @@
 
     <!-- Add Course Fragment -->
     <string name="editTextCourseName_hint">Name</string>
-    <string name="editTextCourseSubject_hint">Subject</string>
+    <string name="editTextCourseSubject_hint">Subject (Optional)</string>
     <string name="editTextCourseStartDate_hint">Start Date</string>
     <string name="editTextCourseEndDate_hint">End Date</string>
     <string name="editTextCourseMinimumGrade_hint">Passing Grade (Optional)</string>
     <string name="editTextCourseMinimumGrade_helperText">The minimum grade needed in this course to pass; defaults to 50 if left blank.</string>
     <string name="dateFormatHelperText">Dates are formatted as yyyy/mm/dd.</string>
+    <string name="editTextCourseName_errorHint">Invalid Name</string>
+    <string name="editTextCourseStartDate_errorHint">Invalid Start Date</string>
+    <string name="editTextCourseEndDate_errorHint">Invalid End Date</string>
 
 </resources>
