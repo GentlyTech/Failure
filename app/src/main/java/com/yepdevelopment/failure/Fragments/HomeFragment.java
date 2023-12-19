@@ -59,7 +59,7 @@ public class HomeFragment extends Fragment {
             @Override
             public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
                 if (menuItem.getItemId() == R.id.generalOptionAbout) {
-                    navController.navigate(CourseOverviewFragmentDirections.actionCourseOverviewFragmentToHomeFragment());
+                    navController.navigate(HomeFragmentDirections.actionHomeFragmentToAboutFragment());
                     return true;
                 }
                 return false;

@@ -25,6 +25,13 @@
                 app:popEnterAnim="@anim/pop_in"
                 app:popExitAnim="@anim/pop_out"
                 app:popUpTo="@id/homeFragment" />
+        <action
+                android:id="@+id/action_homeFragment_to_aboutFragment"
+                app:destination="@id/aboutFragment"
+                app:enterAnim="@anim/pop_in"
+                app:exitAnim="@anim/pop_out"
+                app:popEnterAnim="@anim/pop_in"
+                app:popExitAnim="@anim/pop_out" />
     </fragment>
     <fragment
             android:id="@+id/addCourseFragment"
@@ -44,4 +51,9 @@
                 app:popExitAnim="@anim/fade_out"
                 app:popEnterAnim="@anim/pop_in" />
     </fragment>
+    <fragment
+            android:id="@+id/aboutFragment"
+            android:name="com.yepdevelopment.failure.Fragments.AboutFragment"
+            android:label="@string/aboutFragmentTitle"
+            tools:layout="@layout/fragment_about" />
 </navigation>
