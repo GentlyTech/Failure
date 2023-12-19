@@ -1,5 +1,6 @@
 package com.yepdevelopment.failure.Database.DAOs;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -13,10 +14,10 @@ import java.util.List;
 @Dao
 public interface SubmittableDAO {
     @Query("SELECT * FROM submittable")
-    List<Submittable> getAll();
+    LiveData<List<Submittable>> getAll();
 
     @Query("SELECT * FROM submittable WHERE associatedCourseId == :courseId")
-    List<Submittable> getAllFromCourse(String courseId);
+    LiveData<List<Submittable>> getAllFromCourse(String courseId);
 
     @Insert
     void insertAll(Submittable... submittables);
