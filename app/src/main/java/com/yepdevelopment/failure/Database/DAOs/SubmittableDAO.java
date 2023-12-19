@@ -11,6 +11,8 @@ import com.yepdevelopment.failure.Database.Entities.Submittable;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Completable;
+
 @Dao
 public interface SubmittableDAO {
     @Query("SELECT * FROM submittable")
@@ -20,8 +22,8 @@ public interface SubmittableDAO {
     LiveData<List<Submittable>> getAllFromCourse(String courseId);
 
     @Insert
-    void insertAll(Submittable... submittables);
+    Completable insertAll(Submittable... submittables);
 
     @Delete
-    void delete(Submittable submittable);
+    Completable delete(Submittable submittable);
 }

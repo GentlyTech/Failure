@@ -10,14 +10,16 @@ import com.yepdevelopment.failure.Database.Entities.Course;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Completable;
+
 @Dao
 public interface CourseDAO {
     @Query("SELECT * FROM course")
     LiveData<List<Course>> getAll();
 
     @Insert
-    void insertAll(Course... course);
+    Completable insertAll(Course... course);
 
     @Delete
-    void delete(Course course);
+    Completable delete(Course course);
 }
