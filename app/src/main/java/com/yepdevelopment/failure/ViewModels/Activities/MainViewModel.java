@@ -9,5 +9,13 @@ import com.yepdevelopment.failure.Database.Entities.Course;
 import java.util.List;
 
 public class MainViewModel extends ViewModel {
+    private final MutableLiveData<Course> selectedCourse = new MutableLiveData<>();
 
+    public LiveData<Course> getSelectedCourse() {
+        return this.selectedCourse;
+    }
+
+    public void setSelectedCourse(Course newCourse) {
+        this.selectedCourse.setValue(newCourse);
+    }
 }
