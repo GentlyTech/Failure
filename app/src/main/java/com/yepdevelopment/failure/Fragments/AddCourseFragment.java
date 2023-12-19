@@ -48,7 +48,7 @@ public class AddCourseFragment extends Fragment {
         TextInputLayout editTextLayoutCourseStartDate = view.findViewById(R.id.editTextLayoutCourseStartDate);
         TextInputLayout editTextLayoutCourseEndDate = view.findViewById(R.id.editTextLayoutCourseEndDate);
 
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd", Locale.CANADA);
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd", Locale.CANADA); // TODO maybe make locale dynamic
 
         editTextLayoutCourseStartDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
             Calendar calendar = Calendar.getInstance();
