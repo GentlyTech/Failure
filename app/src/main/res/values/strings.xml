@@ -15,7 +15,8 @@
     <!-- Fragment Titles -->
     <string name="aboutFragmentTitle">About %1$s</string>
     <string name="addCourseFragmentTitle">Add course</string>
-    <string name="courseOverviewFragmentTitle">Course Overview</string>
+    <string name="addSubmittableFragmentTitle">Add submittable</string>
+    <string name="courseOverviewFragmentTitle">%1$s</string>
     <string name="homeFragmentTitle">Courses</string>
 
     <!-- Home Fragment -->

@@ -40,6 +40,8 @@ public class CourseOverviewFragment extends Fragment {
 
         course = mainViewModel.getSelectedCourse().getValue();
         if (course == null) navController.popBackStack();
+
+        requireActivity().setTitle(getString(R.string.courseOverviewFragmentTitle, course.getName()));
     }
 
     @Override
