@@ -29,8 +29,8 @@ public class Submittable {
         this.assignDate = assignDate;
         this.dueDate = dueDate;
         this.associatedCourseId = associatedCourseId;
-        this.weight = weight;
-        this.maxGrade = maxGrade;
+        this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
+        this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
         this.achievedGrade = achievedGrade;
     }
 
@@ -42,8 +42,8 @@ public class Submittable {
         this.assignDate = assignDate;
         this.dueDate = dueDate;
         this.associatedCourseId = "";
-        this.weight = weight;
-        this.maxGrade = maxGrade;
+        this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
+        this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
         this.achievedGrade = achievedGrade;
     }
 
@@ -55,8 +55,8 @@ public class Submittable {
         this.assignDate = assignDate;
         this.dueDate = dueDate;
         this.associatedCourseId = associatedCourseId;
-        this.weight = weight;
-        this.maxGrade = maxGrade;
+        this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
+        this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
         this.achievedGrade = 0.0f;
     }
 
@@ -68,8 +68,8 @@ public class Submittable {
         this.assignDate = assignDate;
         this.dueDate = dueDate;
         this.associatedCourseId = "";
-        this.weight = weight;
-        this.maxGrade = maxGrade;
+        this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
+        this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
         this.achievedGrade = 0.0f;
     }
 

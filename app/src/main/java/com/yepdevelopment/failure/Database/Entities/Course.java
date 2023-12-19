@@ -45,7 +45,7 @@ public class Course {
         this.subject = subject;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.minimumGrade = minimumGrade >= 0.0f ? minimumGrade : 50.0f;
+        this.minimumGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(minimumGrade, 0.0f, 100.0f, 50.0f);
     }
 
     /**
@@ -58,7 +58,7 @@ public class Course {
         this.subject = subject;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.minimumGrade = minimumGrade >= 0.0f ? minimumGrade : 50.0f;
+        this.minimumGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(minimumGrade, 0.0f, 100.0f, 50.0f);
     }
 
     /**
