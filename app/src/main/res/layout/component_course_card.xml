@@ -13,7 +13,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/courseCard" >
+            android:id="@+id/courseCard"
+            app:cardCornerRadius="10dp"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -60,12 +63,22 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/textCourseCardCourseGrade"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginBottom="16dp"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="16dp"
+                    android:textSize="34sp"
+                    app:layout_constraintEnd_toStartOf="@+id/imageCourseCardArrow"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center" />
+
+            <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:id="@+id/imageCourseCardArrow"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:textSize="48sp"
-                    android:layout_marginEnd="16dp" />
+                    android:layout_marginEnd="16dp"
+                    app:srcCompat="@drawable/baseline_arrow_right_24"
+                    android:tint="@color/gray" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
