@@ -42,6 +42,7 @@ public class ContributorAdapter extends RecyclerView.Adapter<ContributorViewHold
 
         ComponentContributorEntryBinding binding = holder.getBinding();
         binding.textContributorName.setText(contributor.getName());
+        binding.textContributorRole.setText(contributor.getRole());
 
         if (!contributor.getImageUri().isEmpty()) {
             binding.imageContributorPhoto.setImageURI(Uri.parse(contributor.getImageUri()));

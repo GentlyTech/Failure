@@ -2,6 +2,7 @@
 <resources>
     <string-array name="contributorAndyYep">
         <item>Andy Yep (GentlyTech)</item>
+        <item>Developer</item>
         <item></item>
     </string-array>
     <array name="contributors">

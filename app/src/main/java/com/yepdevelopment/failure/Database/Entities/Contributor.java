@@ -5,6 +5,7 @@ package com.yepdevelopment.failure.Database.Entities;
  */
 public class Contributor {
     private final String name;
+    private final String role;
     private final String imageUri;
 
     public Contributor(String name) {
@@ -14,14 +15,37 @@ public class Contributor {
             this.name = name;
         }
 
+        this.role = "";
         this.imageUri = "";
     }
 
-    public Contributor(String name, String imageUri) {
+    public Contributor(String name, String role) {
         if (name == null) {
             this.name = "";
         } else {
             this.name = name;
+        }
+
+        if (role == null) {
+            this.role = "";
+        } else {
+            this.role = role;
+        }
+
+        this.imageUri = "";
+    }
+
+    public Contributor(String name, String role, String imageUri) {
+        if (name == null) {
+            this.name = "";
+        } else {
+            this.name = name;
+        }
+
+        if (role == null) {
+            this.role = "";
+        } else {
+            this.role = role;
         }
 
         if (imageUri == null) {
@@ -33,6 +57,10 @@ public class Contributor {
 
     public String getName() {
         return name;
+    }
+
+    public String getRole() {
+        return role;
     }
 
     public String getImageUri() {
