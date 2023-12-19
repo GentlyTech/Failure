@@ -1,6 +1,7 @@
 package com.yepdevelopment.failure.Adapters;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -32,16 +33,19 @@ public class SubmittableAdapter extends RecyclerView.Adapter<GenericViewHolder<C
     @NonNull
     @Override
     public GenericViewHolder<ComponentSubmittableCardBinding> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        ComponentSubmittableCardBinding binding = ComponentSubmittableCardBinding.inflate(layoutInflater, parent, false);
+        return new GenericViewHolder<>(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull GenericViewHolder<ComponentSubmittableCardBinding> holder, int position) {
-
+        Submittable submittable = submittables.get(position);
+        if (submittable == null) return;
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return submittables.size();
     }
 }
