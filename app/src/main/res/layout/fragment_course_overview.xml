@@ -56,7 +56,7 @@
             android:textSize="34sp" />
 
     <TextView
-            android:text="TextView"
+            android:text="Minimum Grade"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/textCourseOverviewMinimumGrade"
