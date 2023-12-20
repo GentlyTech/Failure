@@ -25,3 +25,6 @@ Ok, but seriously, the primary goal of the app is to calculate minimum grades ne
   - By prioritizing higher weight assignments
     - Perhaps let the user specify the minimum cutoff weight in which an assignment should be considered
       - Any other assignment with a weight less than the one set by the user will be ignored from lowest grade calculations (i.e. treated as having a grade of 0 already)
+  - If an assignment is already complete:
+    - Find next highest weighted assignment and do some magic? If there are multiple assignments of equal weight then maybe balance the lowest grade into all of those.
+    - Ignore the rest?
