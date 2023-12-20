@@ -60,4 +60,7 @@
     <string name="editTextSubmittableDueDate_errorHint">Invalid End Date</string>
     <string name="editTextSubmittableWeight_errorHint">Invalid Weight</string>
 
+    <!-- Submittable Info Fragment -->
+    <string name="textSubmittableInfoWeight_text">Weight: %1$s%%</string>
+
 </resources>
