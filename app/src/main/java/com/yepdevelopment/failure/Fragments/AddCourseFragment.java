@@ -52,6 +52,9 @@ public class AddCourseFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        binding.addCourseFormButtonLayout.simpleButtonPositiveAction.setText(R.string.create);
+        binding.addCourseFormButtonLayout.simpleButtonNegativeAction.setText(R.string.cancel);
+
         SimpleDateFormat dateFormatter = new SimpleDateFormat(DATE_FORMAT, Locale.CANADA); // TODO maybe make locale dynamic
 
         binding.editTextLayoutCourseStartDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
@@ -77,8 +80,8 @@ public class AddCourseFragment extends Fragment {
         }
 
         binding.buttonDebugAddCourse.setOnClickListener(this::createSampleCourse);
-        binding.buttonConfirmAddCourse.setOnClickListener(this::createCourse);
-        binding.buttonCancelAddCourse.setOnClickListener(button -> navController.popBackStack());
+        binding.addCourseFormButtonLayout.simpleButtonPositiveAction.setOnClickListener(this::createCourse);
+        binding.addCourseFormButtonLayout.simpleButtonNegativeAction.setOnClickListener(button -> navController.popBackStack());
     }
 
     public void clearFieldErrors() {

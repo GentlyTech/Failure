@@ -61,6 +61,9 @@ public class EditCourseFragment extends Fragment {
         binding.editTextCourseEndDate.setText(course.getEndDate());
         binding.editTextCourseMinimumGrade.setText(String.valueOf(course.getMinimumGrade()));
 
+        binding.editCourseButtonLayout.simpleButtonPositiveAction.setText(R.string.save);
+        binding.editCourseButtonLayout.simpleButtonNegativeAction.setText(R.string.cancel);
+
         SimpleDateFormat dateFormatter = new SimpleDateFormat(DATE_FORMAT, Locale.CANADA); // TODO maybe make locale dynamic
 
         binding.editTextLayoutCourseStartDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
@@ -79,8 +82,8 @@ public class EditCourseFragment extends Fragment {
             return null;
         }).show(getParentFragmentManager(), null));
 
-        binding.buttonConfirmEditCourse.setOnClickListener(this::editCourse);
-        binding.buttonCancelEditCourse.setOnClickListener(button -> navController.popBackStack());
+        binding.editCourseButtonLayout.simpleButtonPositiveAction.setOnClickListener(this::editCourse);
+        binding.editCourseButtonLayout.simpleButtonNegativeAction.setOnClickListener(button -> navController.popBackStack());
     }
 
     public void clearFieldErrors() {
