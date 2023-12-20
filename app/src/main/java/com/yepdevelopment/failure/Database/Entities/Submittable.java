@@ -57,7 +57,7 @@ public class Submittable implements Cloneable {
         this.associatedCourseId = associatedCourseId;
         this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
         this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
-        this.achievedGrade = -1.0f;
+        this.achievedGrade = 0.0f;
     }
 
     @Ignore
@@ -83,7 +83,7 @@ public class Submittable implements Cloneable {
         this.associatedCourseId = "";
         this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
         this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
-        this.achievedGrade = -1.0f;
+        this.achievedGrade = 0.0f;
     }
 
     @Ignore
@@ -96,7 +96,7 @@ public class Submittable implements Cloneable {
         this.associatedCourseId = associatedCourseId;
         this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
         this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
-        this.achievedGrade = -1.0f;
+        this.achievedGrade = 0.0f;
     }
 
     @Ignore
@@ -213,10 +213,6 @@ public class Submittable implements Cloneable {
     public float calculateGrade() {
         // TODO implement calculateGrade()
         return 0.0f;
-    }
-
-    public boolean isComplete() {
-        return this.achievedGrade >= 0.0f;
     }
 
 }
