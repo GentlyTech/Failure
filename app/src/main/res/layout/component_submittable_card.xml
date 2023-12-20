@@ -39,7 +39,7 @@
 
             <TextView
                     android:text="Assignment"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textSubmittableCardName"
                     app:layout_constraintStart_toEndOf="@+id/imageSubmittableCard"
@@ -47,18 +47,20 @@
                     android:layout_marginStart="16dp"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toTopOf="@+id/textSubmittableCardDescription"
-                    android:layout_marginTop="16dp" />
+                    android:layout_marginTop="16dp"
+                    android:singleLine="true" />
 
             <TextView
                     android:text="Description"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textSubmittableCardDescription"
                     app:layout_constraintStart_toEndOf="@+id/imageSubmittableCard"
                     app:layout_constraintTop_toBottomOf="@+id/textSubmittableCardName"
                     android:layout_marginStart="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:singleLine="true" />
 
             <androidx.constraintlayout.widget.Barrier
                     android:layout_width="wrap_content"
@@ -70,8 +72,8 @@
 
             <TextView
                     android:text="50%"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:id="@+id/textSubmittableCardMinimumGrade"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -80,11 +82,10 @@
                     android:textSize="24sp"
                     android:gravity="center"
                     app:autoSizeTextType="uniform"
-                    app:layout_constraintStart_toEndOf="@+id/barrier"
                     android:layout_marginBottom="16dp"
                     android:layout_marginTop="16dp"
                     app:autoSizeMaxTextSize="24sp"
-                    android:layout_marginStart="16dp" />
+                    android:singleLine="true" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
