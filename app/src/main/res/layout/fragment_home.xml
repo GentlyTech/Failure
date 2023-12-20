@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textColor="@color/gray" />
 
     <TextView
