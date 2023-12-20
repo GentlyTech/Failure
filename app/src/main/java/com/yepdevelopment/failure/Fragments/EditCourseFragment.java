@@ -115,9 +115,11 @@ public class EditCourseFragment extends Fragment {
 
         if (hasError) return;
 
-        Course updatedCourse = new Course(courseName, courseSubject, courseStartDate, courseEndDate, courseMinimumGrade);
+        Course updatedCourse = new Course(course.getId(), courseName, courseSubject, courseStartDate, courseEndDate, courseMinimumGrade);
 
-        Async.run(database.courseDao().update(updatedCourse));
+        Async.run(database.courseDao().update(course, updatedCourse));
+
+        mainViewModel.setSelectedCourse(updatedCourse);
 
         navController.popBackStack();
     }

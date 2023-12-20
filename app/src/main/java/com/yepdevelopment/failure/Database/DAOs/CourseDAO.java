@@ -22,7 +22,7 @@ public interface CourseDAO {
     Completable insertAll(Course... course);
 
     @Update
-    Completable update(Course course);
+    Completable update(Course oldCourse, Course updatedCourse);
 
     @Delete
     Completable delete(Course course);
