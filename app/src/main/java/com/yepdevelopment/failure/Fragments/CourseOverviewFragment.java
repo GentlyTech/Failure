@@ -77,7 +77,7 @@ public class CourseOverviewFragment extends Fragment {
                 if (menuItem.getItemId() == R.id.courseOptionDelete) {
                     Async.run(database.courseDao().delete(course));
                     mainViewModel.setSelectedCourse(null);
-                    navController.navigate(CourseOverviewFragmentDirections.actionCourseOverviewFragmentToHomeFragment());
+                    navController.popBackStack();
                     return true;
                 }
                 return false;
