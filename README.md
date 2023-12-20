@@ -32,3 +32,4 @@ Ok, but seriously, the primary goal of the app is to calculate minimum grades ne
 ## TODOs
 
 - Add relation between Course and Submittable so that Submittables aren't orphaned when a Course is deleted
+- Come up with a way to centralize field validation UI code if they operate on the same shared layout (e.g. CourseForm or SubmittableForm)
