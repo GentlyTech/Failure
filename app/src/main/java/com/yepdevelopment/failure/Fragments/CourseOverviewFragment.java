@@ -85,6 +85,14 @@ public class CourseOverviewFragment extends Fragment {
 
         binding.recyclerViewSubmittablesList.setLayoutManager(new LinearLayoutManager(requireContext()));
         database.submittableDao().getAllFromCourse(course.getId()).observe(getViewLifecycleOwner(), courses -> {
+            if (courses == null || courses.isEmpty()) {
+                binding.groupSubmittablesListEmptyHint.setVisibility(View.VISIBLE);
+                binding.recyclerViewSubmittablesList.setVisibility(View.GONE);
+            } else {
+                binding.groupSubmittablesListEmptyHint.setVisibility(View.GONE);
+                binding.recyclerViewSubmittablesList.setVisibility(View.VISIBLE);
+            }
+
             binding.recyclerViewSubmittablesList.setAdapter(new SubmittableAdapter(requireContext(), courses, (submittable -> {
                 mainViewModel.setSelectedSubmittable(submittable);
                 navController.navigate(CourseOverviewFragmentDirections.actionCourseOverviewFragmentToSubmittableInfoFragment());

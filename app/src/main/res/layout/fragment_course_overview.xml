@@ -7,6 +7,12 @@
         tools:context=".Fragments.CourseOverviewFragment"
         android:id="@+id/courseOverviewFragmentLayoutRoot">
 
+    <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/groupSubmittablesListEmptyHint"
+            app:constraint_referenced_ids="textSubmittablesListEmptyHintHeader,textSubmittablesListEmptyHintBody" />
+
     <TextView
             android:text="Course Name"
             android:layout_width="wrap_content"
@@ -64,9 +70,34 @@
             android:id="@+id/textCourseOverviewSubmittablesTitle"
             app:layout_constraintStart_toStartOf="parent"
             android:gravity="center"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+    <TextView
+            android:text="@string/textSubmittableListEmptyHintHeader_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textSubmittablesListEmptyHintHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textCourseOverviewSubmittablesTitle"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/gray" />
+
+    <TextView
+            android:text="@string/textSubmittableListEmptyHintBody_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textSubmittablesListEmptyHintBody"
+            app:layout_constraintTop_toBottomOf="@+id/textSubmittablesListEmptyHintHeader"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"
+            android:textColor="@color/darkerGray" />
 
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"

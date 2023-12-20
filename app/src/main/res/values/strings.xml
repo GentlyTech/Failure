@@ -26,6 +26,10 @@
     <string name="textCourseListEmptyHintHeader_text">No courses</string>
     <string name="textCourseListEmptyHintBody_text">Create a course using the + button</string>
 
+    <!-- Course Overview Fragment -->
+    <string name="textSubmittableListEmptyHintHeader_text">No submittables</string>
+    <string name="textSubmittableListEmptyHintBody_text">Create submittables using the + button</string>
+
     <!-- Add Course Fragment -->
     <string name="editTextCourseName_hint">Name</string>
     <string name="editTextCourseSubject_hint">Subject (Optional)</string>
