@@ -13,7 +13,7 @@ public class Math {
     }
 
     public static float clamp(float value, float min, float max, float defaultValue) {
-        if (value > max || value < max) return defaultValue;
+        if (value > max || value < min) return defaultValue;
         return value;
     }
 }
