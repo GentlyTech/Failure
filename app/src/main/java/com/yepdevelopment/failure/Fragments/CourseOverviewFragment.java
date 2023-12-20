@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,16 +54,13 @@ public class CourseOverviewFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        binding.textCourseOverviewName.setText(course.getName());
-        binding.textCourseOverviewSubject.setText(course.getSubject());
-        binding.textCourseOverviewDateInterval.setText(getString(R.string.textCourseOverviewDateInterval_text, course.getStartDate(), course.getEndDate()));
-        binding.textCourseOverviewMinimumGrade.setText(getString(R.string.textCourseOverviewMinimumGrade_text, String.valueOf(course.getMinimumGrade())));
+        mainViewModel.getSelectedCourse().observe(getViewLifecycleOwner(), newCourse -> {
+            if (newCourse == null) return;
+            course = newCourse;
+            setValues();
+        });
 
-        float calculatedGrade = course.calculateGrade();
-        binding.textCourseOverviewGrade.setText(String.format("%s%%", course.calculateGrade()));
-        if (calculatedGrade < course.getMinimumGrade()) {
-            binding.textCourseOverviewGrade.setTextColor(requireContext().getColor(R.color.niceRed));
-        }
+        setValues();
 
         binding.floatingActionButtonAddSubmittable.setOnClickListener(ignored -> navController.navigate(CourseOverviewFragmentDirections.actionCourseOverviewFragmentToAddSubmittableFragment()));
 
@@ -80,8 +78,7 @@ public class CourseOverviewFragment extends Fragment {
                     mainViewModel.setSelectedCourse(null);
                     navController.popBackStack();
                     return true;
-                }
-                else if (menuItem.getItemId() == R.id.courseOptionEdit) {
+                } else if (menuItem.getItemId() == R.id.courseOptionEdit) {
                     navController.navigate(CourseOverviewFragmentDirections.actionCourseOverviewFragmentToEditCourseFragment());
                 }
                 return false;
@@ -109,5 +106,22 @@ public class CourseOverviewFragment extends Fragment {
     public void onStart() {
         super.onStart();
         requireActivity().setTitle(getString(R.string.courseOverviewFragmentTitle, course.getName()));
+    }
+
+    public void setValues() {
+        requireActivity().setTitle(getString(R.string.courseOverviewFragmentTitle, course.getName()));
+
+        binding.textCourseOverviewName.setText(course.getName());
+        binding.textCourseOverviewSubject.setText(course.getSubject());
+        binding.textCourseOverviewDateInterval.setText(getString(R.string.textCourseOverviewDateInterval_text, course.getStartDate(), course.getEndDate()));
+        binding.textCourseOverviewMinimumGrade.setText(getString(R.string.textCourseOverviewMinimumGrade_text, String.valueOf(course.getMinimumGrade())));
+
+        float calculatedGrade = course.calculateGrade();
+        binding.textCourseOverviewGrade.setText(String.format("%s%%", course.calculateGrade()));
+        if (calculatedGrade < course.getMinimumGrade()) {
+            binding.textCourseOverviewGrade.setTextColor(requireContext().getColor(R.color.niceRed));
+        } else {
+            binding.textCourseOverviewGrade.setTextColor(new TextView(requireContext()).getTextColors()); // FIXME jank way to get default colors but it works
+        }
     }
 }
