@@ -72,11 +72,14 @@ public class SubmittableInfoFragment extends Fragment {
 
             @Override
             public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
-                if (menuItem.getItemId() == R.id.courseOptionDelete) {
-                    // TODO implement submittable deletion here
+                if (menuItem.getItemId() == R.id.submittableOptionDelete) {
+                    database.submittableDao().delete(submittable);
                     mainViewModel.setSelectedSubmittable(null);
                     navController.popBackStack();
                     return true;
+                }
+                else if (menuItem.getItemId() == R.id.submittableOptionEdit) {
+                    // navController.navigate(SubmittableInfoFragmentDirections.); // TODO implement submittable editing
                 }
                 return false;
             }
