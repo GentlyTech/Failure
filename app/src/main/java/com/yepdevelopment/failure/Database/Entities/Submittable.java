@@ -9,7 +9,7 @@ import java.util.UUID;
 
 
 @Entity
-public class Submittable {
+public class Submittable implements Cloneable {
     @PrimaryKey
     @NonNull
     private String id;
@@ -97,6 +97,30 @@ public class Submittable {
         this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
         this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
         this.achievedGrade = 0.0f;
+    }
+
+    @Ignore
+    public Submittable() {
+        this.id = UUID.randomUUID().toString();
+        this.name = "";
+        this.description = "";
+        this.assignDate = "";
+        this.dueDate = "";
+        this.associatedCourseId = "";
+        this.weight = 10.0f;
+        this.maxGrade = 100.0f;
+        this.achievedGrade = 0.0f;
+    }
+
+    @NonNull
+    @Override
+    public Submittable clone() {
+        try {
+            Submittable clone = (Submittable) super.clone();
+            return new Submittable(clone.getId(), clone.name, clone.description, clone.assignDate, clone.dueDate, clone.getAssociatedCourseId(), clone.weight, clone.maxGrade, clone.achievedGrade);
+        } catch (CloneNotSupportedException ignored) {
+            return new Submittable();
+        }
     }
 
     @NonNull
