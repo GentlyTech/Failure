@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.MenuHost;
 import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
@@ -74,9 +75,7 @@ public class CourseOverviewFragment extends Fragment {
             @Override
             public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
                 if (menuItem.getItemId() == R.id.courseOptionDelete) {
-                    Async.run(database.courseDao().delete(course));
-                    mainViewModel.setSelectedCourse(null);
-                    navController.popBackStack();
+                    showDeleteConfirmationDialog();
                     return true;
                 } else if (menuItem.getItemId() == R.id.courseOptionEdit) {
                     navController.navigate(CourseOverviewFragmentDirections.actionCourseOverviewFragmentToEditCourseFragment());
@@ -106,6 +105,20 @@ public class CourseOverviewFragment extends Fragment {
     public void onStart() {
         super.onStart();
         requireActivity().setTitle(getString(R.string.courseOverviewFragmentTitle, course.getName()));
+    }
+
+    public void showDeleteConfirmationDialog() {
+        new AlertDialog.Builder(requireContext())
+                .setTitle(getString(R.string.textDeleteCourseHeader_text, course.getName()))
+                .setMessage(R.string.textDeleteCourseBody_text)
+                .setIcon(R.drawable.baseline_warning_24)
+                .setNegativeButton(R.string.cancel, null)
+                .setPositiveButton(R.string.delete, (dialog, which) -> {
+                    Async.run(database.courseDao().delete(course));
+                    mainViewModel.setSelectedCourse(null);
+                    navController.popBackStack();
+                })
+                .show();
     }
 
     public void setValues() {
