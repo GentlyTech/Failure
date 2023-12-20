@@ -30,7 +30,7 @@ public class Submittable {
         this.dueDate = dueDate;
         this.associatedCourseId = associatedCourseId;
         this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
-        this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
+        this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(maxGrade, 0.0f, 100.0f, 100.0f);
         this.achievedGrade = achievedGrade;
     }
 
