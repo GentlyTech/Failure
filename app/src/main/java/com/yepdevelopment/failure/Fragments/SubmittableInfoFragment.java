@@ -1,6 +1,7 @@
 package com.yepdevelopment.failure.Fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,6 +21,8 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.yepdevelopment.failure.Database.AppDatabase;
 import com.yepdevelopment.failure.Database.Entities.Submittable;
 import com.yepdevelopment.failure.R;
+import com.yepdevelopment.failure.Utils.Android.TextChangedListeners.AfterTextChangedListener;
+import com.yepdevelopment.failure.Utils.JavaRX.Async;
 import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
 import com.yepdevelopment.failure.databinding.FragmentSubmittableInfoBinding;
 
@@ -53,10 +56,24 @@ public class SubmittableInfoFragment extends Fragment {
         mainViewModel.getSelectedSubmittable().observe(getViewLifecycleOwner(), updatedSubmittable -> {
             if (updatedSubmittable == null) return;
             submittable = updatedSubmittable;
-            setValues();
+            setValues(false);
         });
 
-        setValues();
+        setValues(true);
+
+        binding.editTextAchievedGrade.addTextChangedListener(new AfterTextChangedListener(newRawValue -> {
+            try {
+                float newValue = Float.parseFloat(newRawValue.toString());
+                if (newValue == submittable.getAchievedGrade()) return;
+
+                Submittable updatedSubmittable = submittable.clone();
+                updatedSubmittable.setAchievedGrade(newValue);
+                Async.run(database.submittableDao().update(submittable, updatedSubmittable));
+                mainViewModel.setSelectedSubmittable(updatedSubmittable);
+            } catch (NumberFormatException ex) {
+                Log.w(SubmittableInfoFragment.class.getName(), "Unable to cast editTextAchievedGrade's value to float");
+            }
+        }));
 
         MenuHost menuHost = requireActivity();
         menuHost.addMenuProvider(new MenuProvider() {
@@ -92,11 +109,15 @@ public class SubmittableInfoFragment extends Fragment {
         mainViewModel.setSelectedSubmittable(null);
     }
 
-    public void setValues() {
+    public void setValues(boolean updateFields) {
         binding.submittableInfoDash.entityDashTitle.setText(submittable.getName());
         binding.submittableInfoDash.entityDashDate.setText(getString(R.string.dateInterval, submittable.getAssignDate(), submittable.getDueDate()));
         binding.submittableInfoDash.entityDashBigNumber.setText(String.format("%s%%", submittable.calculateGrade()));
         binding.submittableInfoDash.entityDashBigNumberCaption.setText(getString(R.string.textSubmittableInfoWeight_text, String.valueOf(submittable.getWeight())));
+
+        if (updateFields) {
+            binding.editTextAchievedGrade.setText(String.valueOf(submittable.getAchievedGrade()));
+        }
 
         String description = submittable.getDescription();
         if (description.isEmpty()) {

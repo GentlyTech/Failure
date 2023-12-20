@@ -63,5 +63,6 @@
 
     <!-- Submittable Info Fragment -->
     <string name="textSubmittableInfoWeight_text">Weight: %1$s%%</string>
+    <string name="editTextSubmittableInfoAchievedGrade_hint">Achieved Grade</string>
 
 </resources>
