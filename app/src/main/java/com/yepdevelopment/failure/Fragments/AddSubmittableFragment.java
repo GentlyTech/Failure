@@ -61,19 +61,19 @@ public class AddSubmittableFragment extends Fragment {
 
         SimpleDateFormat dateFormatter = new SimpleDateFormat(DATE_FORMAT, Locale.CANADA);
 
-        binding.editTextLayoutSubmittableAssignDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
+        binding.addSubmittableForm.editTextLayoutSubmittableAssignDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
             Calendar calendar = Calendar.getInstance();
             calendar.set(year, month, day);
 
-            binding.editTextSubmittableAssignDate.setText(dateFormatter.format(calendar.getTime()));
+            binding.addSubmittableForm.editTextSubmittableAssignDate.setText(dateFormatter.format(calendar.getTime()));
             return null;
         }).show(getParentFragmentManager(), null));
 
-        binding.editTextLayoutSubmittableDueDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
+        binding.addSubmittableForm.editTextLayoutSubmittableDueDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
             Calendar calendar = Calendar.getInstance();
             calendar.set(year, month, day);
 
-            binding.editTextSubmittableDueDate.setText(dateFormatter.format(calendar.getTime()));
+            binding.addSubmittableForm.editTextSubmittableDueDate.setText(dateFormatter.format(calendar.getTime()));
             return null;
         }).show(getParentFragmentManager(), null));
 
@@ -82,38 +82,38 @@ public class AddSubmittableFragment extends Fragment {
     }
 
     public void clearFieldErrors() {
-        binding.editTextLayoutSubmittableName.setError(null);
-        binding.editTextLayoutSubmittableAssignDate.setError(null);
-        binding.editTextLayoutSubmittableDueDate.setError(null);
-        binding.editTextLayoutSubmittableWeight.setError(null);
+        binding.addSubmittableForm.editTextLayoutSubmittableName.setError(null);
+        binding.addSubmittableForm.editTextLayoutSubmittableAssignDate.setError(null);
+        binding.addSubmittableForm.editTextLayoutSubmittableDueDate.setError(null);
+        binding.addSubmittableForm.editTextLayoutSubmittableWeight.setError(null);
     }
 
     public void createSubmittable(View button) {
         clearFieldErrors();
 
-        String submittableName = Parsing.editableToString(binding.editTextSubmittableName.getText());
-        String submittableDescription = Parsing.editableToString(binding.editTextSubmittableDescription.getText());
-        String submittableAssignDate = Parsing.editableToString(binding.editTextSubmittableAssignDate.getText());
-        String submittableDueDate = Parsing.editableToString(binding.editTextSubmittableDueDate.getText());
-        float submittableWeight = Parsing.editableToFloat(binding.editTextSubmittableWeight.getText());
-        float submittableMaxGrade = Parsing.editableToFloat(binding.editTextSubmittableMaxGrade.getText());
+        String submittableName = Parsing.editableToString(binding.addSubmittableForm.editTextSubmittableName.getText());
+        String submittableDescription = Parsing.editableToString(binding.addSubmittableForm.editTextSubmittableDescription.getText());
+        String submittableAssignDate = Parsing.editableToString(binding.addSubmittableForm.editTextSubmittableAssignDate.getText());
+        String submittableDueDate = Parsing.editableToString(binding.addSubmittableForm.editTextSubmittableDueDate.getText());
+        float submittableWeight = Parsing.editableToFloat(binding.addSubmittableForm.editTextSubmittableWeight.getText());
+        float submittableMaxGrade = Parsing.editableToFloat(binding.addSubmittableForm.editTextSubmittableMaxGrade.getText());
 
         boolean hasError = false;
 
         if (!AddSubmittableValidator.isSubmittableNameValid(submittableName)) {
-            binding.editTextLayoutSubmittableName.setError(getString(R.string.editTextSubmittableName_errorHint));
+            binding.addSubmittableForm.editTextLayoutSubmittableName.setError(getString(R.string.editTextSubmittableName_errorHint));
             hasError = true;
         }
         if (!CommonValidator.isDateValid(submittableAssignDate)) {
-            binding.editTextLayoutSubmittableAssignDate.setError(getString(R.string.editTextSubmittableAssignDate_errorHint));
+            binding.addSubmittableForm.editTextLayoutSubmittableAssignDate.setError(getString(R.string.editTextSubmittableAssignDate_errorHint));
             hasError = true;
         }
         if (!CommonValidator.isDateValid(submittableDueDate)) {
-            binding.editTextLayoutSubmittableDueDate.setError(getString(R.string.editTextSubmittableDueDate_errorHint));
+            binding.addSubmittableForm.editTextLayoutSubmittableDueDate.setError(getString(R.string.editTextSubmittableDueDate_errorHint));
             hasError = true;
         }
         if (!AddSubmittableValidator.isWeightValid(submittableWeight)) {
-            binding.editTextLayoutSubmittableWeight.setError(getString(R.string.editTextSubmittableWeight_errorHint));
+            binding.addSubmittableForm.editTextLayoutSubmittableWeight.setError(getString(R.string.editTextSubmittableWeight_errorHint));
             hasError = true;
         }
 

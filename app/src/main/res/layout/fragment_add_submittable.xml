@@ -7,123 +7,14 @@
         tools:context=".Fragments.AddSubmittableFragment"
         android:id="@+id/addSubmittableLayoutRoot" >
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
+    <include
+            layout="@layout/component_submittable_form"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/editTextLayoutSubmittableName"
-            android:hint="@string/editTextSubmittableName_hint"
-            app:endIconMode="clear_text">
-
-        <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editTextSubmittableName"
-                android:singleLine="true" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/editTextLayoutSubmittableDescription"
-            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutSubmittableName"
-            android:layout_marginTop="16dp"
-            android:hint="@string/editTextSubmittableDescription_hint"
-            app:endIconMode="clear_text">
-
-        <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editTextSubmittableDescription"
-                android:singleLine="true" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/editTextLayoutSubmittableAssignDate"
-            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutSubmittableDescription"
-            android:layout_marginTop="16dp"
-            android:hint="@string/editTextSubmittableAssignDate_hint"
-            app:endIconMode="custom"
-            app:endIconDrawable="@drawable/baseline_calendar_month_24"
-            app:helperText="@string/dateFormatHelperText">
-
-        <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editTextSubmittableAssignDate"
-                android:inputType="datetime|date"
-                android:singleLine="true" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/editTextLayoutSubmittableDueDate"
-            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutSubmittableAssignDate"
-            android:layout_marginTop="16dp"
-            android:hint="@string/editTextSubmittableDueDate_hint"
-            app:endIconMode="custom"
-            app:endIconDrawable="@drawable/baseline_calendar_month_24"
-            app:helperText="@string/dateFormatHelperText">
-
-        <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editTextSubmittableDueDate"
-                android:inputType="datetime|date"
-                android:singleLine="true" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/editTextLayoutSubmittableWeight"
-            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutSubmittableDueDate"
-            android:layout_marginTop="16dp"
-            android:hint="@string/editTextSubmittableWeight_hint"
-            app:helperText="@string/editTextSubmittableWeight_helperText"
-            app:endIconMode="clear_text">
-
-        <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editTextSubmittableWeight"
-                android:inputType="number|numberDecimal"
-                android:singleLine="true" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/editTextLayoutSubmittableMaxGrade"
-            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutSubmittableWeight"
-            android:layout_marginTop="16dp"
-            app:helperText="@string/editTextSubmittableMaxGrade_helperText"
-            android:hint="@string/editTextSubmittableMaxGrade_hint"
-            app:endIconMode="clear_text">
-
-        <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editTextSubmittableMaxGrade"
-                android:inputType="number|numberDecimal"
-                android:singleLine="true" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:id="@+id/addSubmittableForm" />
 
     <include
             layout="@layout/component_simple_button_layout"
@@ -132,7 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/editTextLayoutSubmittableMaxGrade"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/addSubmittableForm" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
