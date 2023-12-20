@@ -53,7 +53,7 @@ public class CourseAdapter extends RecyclerView.Adapter<GenericViewHolder<Compon
         if (course == null) return;
 
         ComponentCourseCardBinding binding = holder.getBinding();
-        binding.courseCard.setOnClickListener((ignored) -> this.onClickHandler.accept(course)); // TODO this is probably wrong
+        binding.courseCard.setOnClickListener((ignored) -> this.onClickHandler.accept(course)); // FIXME this is probably wrong
         binding.textCourseCardCourseName.setText(course.getName());
         binding.textCourseCardCourseSubject.setText(course.getSubject());
 

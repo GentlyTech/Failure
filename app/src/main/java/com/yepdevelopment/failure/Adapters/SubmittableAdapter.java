@@ -1,6 +1,7 @@
 package com.yepdevelopment.failure.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -13,18 +14,26 @@ import com.yepdevelopment.failure.databinding.ComponentSubmittableCardBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class SubmittableAdapter extends RecyclerView.Adapter<GenericViewHolder<ComponentSubmittableCardBinding>> {
     Context context;
     List<Submittable> submittables;
+    Consumer<Submittable> onClickHandler;
 
-    public SubmittableAdapter(@NonNull Context context, List<Submittable> submittables) {
+    public SubmittableAdapter(@NonNull Context context, List<Submittable> submittables, Consumer<Submittable> onClickHandler) {
         this.context = context;
 
         if (submittables == null) {
             this.submittables = new ArrayList<>(0);
         } else {
             this.submittables = submittables;
+        }
+
+        if (onClickHandler == null) {
+            this.onClickHandler = (ignored) -> Log.w(SubmittableAdapter.class.getName(), "No onClickHandler was provided");
+        } else {
+            this.onClickHandler = onClickHandler;
         }
     }
 
@@ -42,6 +51,7 @@ public class SubmittableAdapter extends RecyclerView.Adapter<GenericViewHolder<C
         if (submittable == null) return;
 
         ComponentSubmittableCardBinding binding = holder.getBinding();
+        binding.submittableCard.setOnClickListener((ignored) -> this.onClickHandler.accept(submittable)); // FIXME this is probably wrong
         binding.textSubmittableCardName.setText(submittable.getName());
         binding.textSubmittableCardDescription.setText(submittable.getDescription());
         binding.textSubmittableCardMinimumGrade.setText(String.format("%s%%", submittable.calculateGrade()));

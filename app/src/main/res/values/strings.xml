@@ -20,6 +20,7 @@
     <string name="addSubmittableFragmentTitle">Add submittable</string>
     <string name="courseOverviewFragmentTitle">%1$s</string>
     <string name="homeFragmentTitle">Courses</string>
+    <string name="submittableInfoFragmentTitle">About %1$s</string>
 
     <!-- Home Fragment -->
     <string name="textCourseListEmptyHintHeader_text">No courses</string>

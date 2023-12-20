@@ -86,7 +86,10 @@ public class CourseOverviewFragment extends Fragment {
 
         binding.recyclerViewSubmittablesList.setLayoutManager(new LinearLayoutManager(requireContext()));
         database.submittableDao().getAllFromCourse(course.getId()).observe(getViewLifecycleOwner(), courses -> {
-            binding.recyclerViewSubmittablesList.setAdapter(new SubmittableAdapter(requireContext(), courses));
+            binding.recyclerViewSubmittablesList.setAdapter(new SubmittableAdapter(requireContext(), courses, (submittable -> {
+                mainViewModel.setSelectedSubmittable(submittable);
+                navController.navigate(CourseOverviewFragmentDirections.actionCourseOverviewFragmentToSubmittableInfoFragment());
+            })));
         });
     }
 
