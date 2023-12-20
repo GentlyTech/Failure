@@ -125,9 +125,16 @@ public class CourseOverviewFragment extends Fragment {
         requireActivity().setTitle(getString(R.string.courseOverviewFragmentTitle, course.getName()));
 
         binding.textCourseOverviewName.setText(course.getName());
-        binding.textCourseOverviewSubject.setText(course.getSubject());
         binding.textCourseOverviewDateInterval.setText(getString(R.string.dateInterval, course.getStartDate(), course.getEndDate()));
         binding.textCourseOverviewMinimumGrade.setText(getString(R.string.textCourseOverviewMinimumGrade_text, String.valueOf(course.getMinimumGrade())));
+
+        String subject = course.getSubject();
+        if (subject.isEmpty()) {
+            binding.textCourseOverviewSubject.setVisibility(View.GONE);
+        } else {
+            binding.textCourseOverviewSubject.setVisibility(View.VISIBLE);
+            binding.textCourseOverviewSubject.setText(subject);
+        }
 
         float calculatedGrade = course.calculateGrade();
         binding.textCourseOverviewGrade.setText(String.format("%s%%", course.calculateGrade()));
