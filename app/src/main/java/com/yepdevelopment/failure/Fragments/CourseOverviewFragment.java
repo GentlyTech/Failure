@@ -55,6 +55,8 @@ public class CourseOverviewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         binding.textCourseOverviewName.setText(course.getName());
         binding.textCourseOverviewSubject.setText(course.getSubject());
+        binding.textCourseOverviewDateInterval.setText(getString(R.string.textCourseOverviewDateInterval_text, course.getStartDate(), course.getEndDate()));
+        binding.textCourseOverviewMinimumGrade.setText(getString(R.string.textCourseOverviewMinimumGrade_text, String.valueOf(course.getMinimumGrade())));
 
         float calculatedGrade = course.calculateGrade();
         binding.textCourseOverviewGrade.setText(String.format("%s%%", course.calculateGrade()));

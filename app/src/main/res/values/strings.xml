@@ -31,6 +31,8 @@
     <!-- Course Overview Fragment -->
     <string name="textSubmittableListEmptyHintHeader_text">No submittables</string>
     <string name="textSubmittableListEmptyHintBody_text">Create submittables using the + button</string>
+    <string name="textCourseOverviewDateInterval_text">%1$s - %2$s</string>
+    <string name="textCourseOverviewMinimumGrade_text">Passing Grade: %1$s%%</string>
 
     <!-- Add Course Fragment -->
     <string name="editTextCourseName_hint">Name</string>
