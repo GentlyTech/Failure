@@ -18,6 +18,7 @@ import com.yepdevelopment.failure.Database.AppDatabase;
 import com.yepdevelopment.failure.Database.Entities.Course;
 import com.yepdevelopment.failure.R;
 import com.yepdevelopment.failure.Utils.Android.Parsing;
+import com.yepdevelopment.failure.Utils.JavaRX.Async;
 import com.yepdevelopment.failure.Validators.AddCourseValidator;
 import com.yepdevelopment.failure.Validators.CommonValidator;
 import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
@@ -114,9 +115,9 @@ public class EditCourseFragment extends Fragment {
 
         if (hasError) return;
 
-        Course course = new Course(courseName, courseSubject, courseStartDate, courseEndDate, courseMinimumGrade);
+        Course updatedCourse = new Course(courseName, courseSubject, courseStartDate, courseEndDate, courseMinimumGrade);
 
-        //Async.run(database.courseDao().insertAll(course));
+        Async.run(database.courseDao().update(updatedCourse));
 
         navController.popBackStack();
     }

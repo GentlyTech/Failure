@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.yepdevelopment.failure.Database.Entities.Course;
 
@@ -19,6 +20,9 @@ public interface CourseDAO {
 
     @Insert
     Completable insertAll(Course... course);
+
+    @Update
+    Completable update(Course course);
 
     @Delete
     Completable delete(Course course);
