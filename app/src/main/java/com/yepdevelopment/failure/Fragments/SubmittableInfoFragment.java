@@ -50,17 +50,17 @@ public class SubmittableInfoFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        binding.submittableInfoDash.entityOverviewTitle.setText(submittable.getName());
-        binding.submittableInfoDash.entityOverviewDate.setText(getString(R.string.dateInterval, submittable.getAssignDate(), submittable.getDueDate()));
-        binding.submittableInfoDash.entityOverviewBigNumber.setText(String.format("%s%%", submittable.calculateGrade()));
-        binding.submittableInfoDash.entityOverviewBigNumberCaption.setText(getString(R.string.textSubmittableInfoWeight_text, String.valueOf(submittable.getWeight())));
+        binding.submittableInfoDash.entityDashTitle.setText(submittable.getName());
+        binding.submittableInfoDash.entityDashDate.setText(getString(R.string.dateInterval, submittable.getAssignDate(), submittable.getDueDate()));
+        binding.submittableInfoDash.entityDashBigNumber.setText(String.format("%s%%", submittable.calculateGrade()));
+        binding.submittableInfoDash.entityDashBigNumberCaption.setText(getString(R.string.textSubmittableInfoWeight_text, String.valueOf(submittable.getWeight())));
 
         String description = submittable.getDescription();
         if (description.isEmpty()) {
-            binding.submittableInfoDash.entityOverviewBody.setVisibility(View.GONE);
+            binding.submittableInfoDash.entityDashBody.setVisibility(View.GONE);
         } else {
-            binding.submittableInfoDash.entityOverviewBody.setVisibility(View.VISIBLE);
-            binding.submittableInfoDash.entityOverviewBody.setText(description);
+            binding.submittableInfoDash.entityDashBody.setVisibility(View.VISIBLE);
+            binding.submittableInfoDash.entityDashBody.setText(description);
         }
 
         MenuHost menuHost = requireActivity();

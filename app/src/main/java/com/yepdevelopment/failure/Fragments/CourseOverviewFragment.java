@@ -124,24 +124,24 @@ public class CourseOverviewFragment extends Fragment {
     public void setValues() {
         requireActivity().setTitle(getString(R.string.courseOverviewFragmentTitle, course.getName()));
 
-        binding.courseOverviewDash.entityOverviewTitle.setText(course.getName());
-        binding.courseOverviewDash.entityOverviewDate.setText(getString(R.string.dateInterval, course.getStartDate(), course.getEndDate()));
-        binding.courseOverviewDash.entityOverviewBigNumberCaption.setText(getString(R.string.textCourseOverviewMinimumGrade_text, String.valueOf(course.getMinimumGrade())));
+        binding.courseOverviewDash.entityDashTitle.setText(course.getName());
+        binding.courseOverviewDash.entityDashDate.setText(getString(R.string.dateInterval, course.getStartDate(), course.getEndDate()));
+        binding.courseOverviewDash.entityDashBigNumberCaption.setText(getString(R.string.textCourseOverviewMinimumGrade_text, String.valueOf(course.getMinimumGrade())));
 
         String subject = course.getSubject();
         if (subject.isEmpty()) {
-            binding.courseOverviewDash.entityOverviewBody.setVisibility(View.GONE);
+            binding.courseOverviewDash.entityDashBody.setVisibility(View.GONE);
         } else {
-            binding.courseOverviewDash.entityOverviewBody.setVisibility(View.VISIBLE);
-            binding.courseOverviewDash.entityOverviewBody.setText(subject);
+            binding.courseOverviewDash.entityDashBody.setVisibility(View.VISIBLE);
+            binding.courseOverviewDash.entityDashBody.setText(subject);
         }
 
         float calculatedGrade = course.calculateGrade();
-        binding.courseOverviewDash.entityOverviewBigNumber.setText(String.format("%s%%", course.calculateGrade()));
+        binding.courseOverviewDash.entityDashBigNumber.setText(String.format("%s%%", course.calculateGrade()));
         if (calculatedGrade < course.getMinimumGrade()) {
-            binding.courseOverviewDash.entityOverviewBigNumber.setTextColor(requireContext().getColor(R.color.niceRed));
+            binding.courseOverviewDash.entityDashBigNumber.setTextColor(requireContext().getColor(R.color.niceRed));
         } else {
-            binding.courseOverviewDash.entityOverviewBigNumber.setTextColor(new TextView(requireContext()).getTextColors()); // FIXME jank way to get default colors but it works
+            binding.courseOverviewDash.entityDashBigNumber.setTextColor(new TextView(requireContext()).getTextColors()); // FIXME jank way to get default colors but it works
         }
     }
 }
