@@ -14,7 +14,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/editTextLayoutCourseName"
-            android:hint="@string/editTextCourseName_hint">
+            android:hint="@string/editTextCourseName_hint"
+            app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -31,7 +32,8 @@
             android:id="@+id/editTextLayoutCourseSubject"
             app:layout_constraintTop_toBottomOf="@+id/editTextLayoutCourseName"
             android:layout_marginTop="16dp"
-            android:hint="@string/editTextCourseSubject_hint">
+            android:hint="@string/editTextCourseSubject_hint"
+            app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -91,7 +93,8 @@
             app:layout_constraintTop_toBottomOf="@+id/editTextLayoutCourseEndDate"
             android:layout_marginTop="16dp"
             app:helperText="@string/editTextCourseMinimumGrade_helperText"
-            android:hint="@string/editTextCourseMinimumGrade_hint">
+            android:hint="@string/editTextCourseMinimumGrade_hint"
+            app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
