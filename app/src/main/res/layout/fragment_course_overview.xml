@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
             android:id="@+id/barrier"
-            app:constraint_referenced_ids="textCourseOverviewDateInterval,textCourseOverviewGrade" />
+            app:constraint_referenced_ids="textCourseOverviewDateInterval,textCourseOverviewMinimumGrade" />
 
     <View
             android:id="@+id/divider3"

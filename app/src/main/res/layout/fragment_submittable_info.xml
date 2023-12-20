@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
             android:id="@+id/barrier"
-            app:constraint_referenced_ids="textSubmittableInfoDateInterval,textSubmittableInfoGrade" />
+            app:constraint_referenced_ids="textSubmittableInfoDateInterval,textSubmittableInfoWeight" />
 
     <View
             android:id="@+id/divider4"
