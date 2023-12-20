@@ -1,4 +1,4 @@
-package com.yepdevelopment.failure.Utils.Android;
+package com.yepdevelopment.failure.Utils.Android.TextChangedListeners;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,7 +17,7 @@ public class OnTextChangedListener implements TextWatcher {
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        // not implemented
+        // ignored
     }
 
     @Override
@@ -27,6 +27,6 @@ public class OnTextChangedListener implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable editable) {
-        // not implemented
+        // ignored
     }
 }
