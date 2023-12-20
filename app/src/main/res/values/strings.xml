@@ -11,6 +11,7 @@
     <string name="done">Done</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="save">Save</string>
     <string name="submittables">Submittables</string>
     <string name="dateFormatHelperText">Dates are formatted as yyyy/mm/dd.</string>
 
@@ -19,6 +20,7 @@
     <string name="addCourseFragmentTitle">Add course</string>
     <string name="addSubmittableFragmentTitle">Add submittable</string>
     <string name="courseOverviewFragmentTitle">%1$s</string>
+    <string name="editCourseFragmentTitle">Edit %1$s</string>
     <string name="homeFragmentTitle">Courses</string>
     <string name="submittableInfoFragmentTitle">%1$s</string>
 

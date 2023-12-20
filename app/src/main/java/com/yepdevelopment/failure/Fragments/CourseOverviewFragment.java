@@ -79,6 +79,9 @@ public class CourseOverviewFragment extends Fragment {
                     navController.popBackStack();
                     return true;
                 }
+                else if (menuItem.getItemId() == R.id.courseOptionEdit) {
+                    navController.navigate(CourseOverviewFragmentDirections.actionCourseOverviewFragmentToEditCourseFragment());
+                }
                 return false;
             }
         }, getViewLifecycleOwner()); // FIXME does not remove menu from toolbar when deleting a course

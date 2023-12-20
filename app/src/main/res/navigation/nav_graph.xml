@@ -58,6 +58,13 @@
                 app:exitAnim="@anim/pop_out"
                 app:popEnterAnim="@anim/pop_back_in"
                 app:popExitAnim="@anim/pop_out" />
+        <action
+                android:id="@+id/action_courseOverviewFragment_to_editCourseFragment"
+                app:destination="@id/editCourseFragment"
+                app:enterAnim="@anim/pop_in"
+                app:exitAnim="@anim/pop_out"
+                app:popEnterAnim="@anim/pop_back_in"
+                app:popExitAnim="@anim/pop_out" />
     </fragment>
     <fragment
             android:id="@+id/aboutFragment"
@@ -74,4 +81,9 @@
             android:name="com.yepdevelopment.failure.Fragments.SubmittableInfoFragment"
             android:label="@string/submittableInfoFragmentTitle"
             tools:layout="@layout/fragment_submittable_info" />
+    <fragment
+            android:id="@+id/editCourseFragment"
+            android:name="com.yepdevelopment.failure.Fragments.EditCourseFragment"
+            android:label="@string/editCourseFragmentTitle"
+            tools:layout="@layout/fragment_edit_course" />
 </navigation>
