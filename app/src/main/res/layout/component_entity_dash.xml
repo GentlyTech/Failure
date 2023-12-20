@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/entityOverviewComponentLayoutRoot">
+
+    <TextView
+            android:text="Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/entityOverviewTitle"
+            android:gravity="center"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:text="Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/entityOverviewBody"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/entityOverviewTitle"
+            android:textColor="@color/gray"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp" />
+
+    <TextView
+            android:text="Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/entityOverviewDate"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/entityOverviewBody"
+            android:textColor="@color/gray"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp" />
+
+    <TextView
+            android:text="100%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/entityOverviewBigNumber"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="34sp" />
+
+    <TextView
+            android:text="TextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/entityOverviewBigNumberCaption"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:textColor="@color/gray"
+            app:layout_constraintStart_toStartOf="@+id/entityOverviewBigNumber"
+            app:layout_constraintEnd_toEndOf="@+id/entityOverviewBigNumber"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/entityOverviewBigNumber" />
+
+    <androidx.constraintlayout.widget.Barrier
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            android:id="@+id/entityOverviewBarrier"
+            app:constraint_referenced_ids="entityOverviewDate,entityOverviewBigNumberCaption" />
+
+    <View
+            android:id="@+id/entityOverviewDivider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toBottomOf="@+id/entityOverviewBarrier"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
