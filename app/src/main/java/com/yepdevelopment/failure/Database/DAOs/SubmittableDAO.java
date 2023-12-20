@@ -28,5 +28,5 @@ public interface SubmittableDAO {
     Completable update(Submittable oldSubmittable, Submittable updatedSubmittable);
 
     @Delete
-    Completable delete(Submittable submittable); // FIXME figure out why deletion won't work
+    Completable delete(Submittable submittable);
 }
