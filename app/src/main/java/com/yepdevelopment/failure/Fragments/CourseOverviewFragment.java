@@ -82,7 +82,7 @@ public class CourseOverviewFragment extends Fragment {
                 }
                 return false;
             }
-        }, getViewLifecycleOwner()); // FIXME does not remove menu from toolbar when deleting a course
+        }, getViewLifecycleOwner());
 
         binding.recyclerViewSubmittablesList.setLayoutManager(new LinearLayoutManager(requireContext()));
         database.submittableDao().getAllFromCourse(course.getId()).observe(getViewLifecycleOwner(), courses -> {
