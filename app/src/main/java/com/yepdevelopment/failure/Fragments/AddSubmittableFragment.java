@@ -56,6 +56,9 @@ public class AddSubmittableFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        binding.addSubmittableButtonLayout.simpleButtonPositiveAction.setText(R.string.create);
+        binding.addSubmittableButtonLayout.simpleButtonNegativeAction.setText(R.string.cancel);
+
         SimpleDateFormat dateFormatter = new SimpleDateFormat(DATE_FORMAT, Locale.CANADA);
 
         binding.editTextLayoutSubmittableAssignDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
@@ -74,8 +77,8 @@ public class AddSubmittableFragment extends Fragment {
             return null;
         }).show(getParentFragmentManager(), null));
 
-        binding.buttonConfirmAddSubmittable.setOnClickListener(this::createSubmittable);
-        binding.buttonCancelAddSubmittable.setOnClickListener(button -> navController.popBackStack());
+        binding.addSubmittableButtonLayout.simpleButtonPositiveAction.setOnClickListener(this::createSubmittable);
+        binding.addSubmittableButtonLayout.simpleButtonNegativeAction.setOnClickListener(button -> navController.popBackStack());
     }
 
     public void clearFieldErrors() {
