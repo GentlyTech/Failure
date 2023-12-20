@@ -51,6 +51,7 @@ public class SubmittableInfoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         mainViewModel.getSelectedSubmittable().observe(getViewLifecycleOwner(), updatedSubmittable -> {
+            if (updatedSubmittable == null) return;
             submittable = updatedSubmittable;
             setValues();
         });
