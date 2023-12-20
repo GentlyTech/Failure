@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment {
                 }
                 return false;
             }
-        }, getViewLifecycleOwner()); // FIXME does not remove menu from toolbar when deleting a course
+        }, getViewLifecycleOwner());
 
         binding.recyclerViewCourseList.setLayoutManager(new LinearLayoutManager(requireContext()));
 
