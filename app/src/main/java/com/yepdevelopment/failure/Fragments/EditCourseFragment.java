@@ -55,30 +55,30 @@ public class EditCourseFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        binding.editTextCourseName.setText(course.getName());
-        binding.editTextCourseSubject.setText(course.getSubject());
-        binding.editTextCourseStartDate.setText(course.getStartDate());
-        binding.editTextCourseEndDate.setText(course.getEndDate());
-        binding.editTextCourseMinimumGrade.setText(String.valueOf(course.getMinimumGrade()));
+        binding.editCourseForm.editTextCourseName.setText(course.getName());
+        binding.editCourseForm.editTextCourseSubject.setText(course.getSubject());
+        binding.editCourseForm.editTextCourseStartDate.setText(course.getStartDate());
+        binding.editCourseForm.editTextCourseEndDate.setText(course.getEndDate());
+        binding.editCourseForm.editTextCourseMinimumGrade.setText(String.valueOf(course.getMinimumGrade()));
 
         binding.editCourseButtonLayout.simpleButtonPositiveAction.setText(R.string.save);
         binding.editCourseButtonLayout.simpleButtonNegativeAction.setText(R.string.cancel);
 
         SimpleDateFormat dateFormatter = new SimpleDateFormat(DATE_FORMAT, Locale.CANADA); // TODO maybe make locale dynamic
 
-        binding.editTextLayoutCourseStartDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
+        binding.editCourseForm.editTextLayoutCourseStartDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
             Calendar calendar = Calendar.getInstance();
             calendar.set(year, month, day);
 
-            binding.editTextCourseStartDate.setText(dateFormatter.format(calendar.getTime()));
+            binding.editCourseForm.editTextCourseStartDate.setText(dateFormatter.format(calendar.getTime()));
             return null;
         }).show(getParentFragmentManager(), null));
 
-        binding.editTextLayoutCourseEndDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
+        binding.editCourseForm.editTextLayoutCourseEndDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
             Calendar calendar = Calendar.getInstance();
             calendar.set(year, month, day);
 
-            binding.editTextCourseEndDate.setText(dateFormatter.format(calendar.getTime()));
+            binding.editCourseForm.editTextCourseEndDate.setText(dateFormatter.format(calendar.getTime()));
             return null;
         }).show(getParentFragmentManager(), null));
 
@@ -87,32 +87,32 @@ public class EditCourseFragment extends Fragment {
     }
 
     public void clearFieldErrors() {
-        binding.editTextLayoutCourseName.setError(null);
-        binding.editTextLayoutCourseStartDate.setError(null);
-        binding.editTextLayoutCourseEndDate.setError(null);
+        binding.editCourseForm.editTextLayoutCourseName.setError(null);
+        binding.editCourseForm.editTextLayoutCourseStartDate.setError(null);
+        binding.editCourseForm.editTextLayoutCourseEndDate.setError(null);
     }
 
     public void editCourse(View button) {
         clearFieldErrors();
 
-        String courseName = Parsing.editableToString(binding.editTextCourseName.getText());
-        String courseSubject = Parsing.editableToString(binding.editTextCourseSubject.getText());
-        String courseStartDate = Parsing.editableToString(binding.editTextCourseStartDate.getText());
-        String courseEndDate = Parsing.editableToString(binding.editTextCourseEndDate.getText());
-        float courseMinimumGrade = Parsing.editableToFloat(binding.editTextCourseMinimumGrade.getText());
+        String courseName = Parsing.editableToString(binding.editCourseForm.editTextCourseName.getText());
+        String courseSubject = Parsing.editableToString(binding.editCourseForm.editTextCourseSubject.getText());
+        String courseStartDate = Parsing.editableToString(binding.editCourseForm.editTextCourseStartDate.getText());
+        String courseEndDate = Parsing.editableToString(binding.editCourseForm.editTextCourseEndDate.getText());
+        float courseMinimumGrade = Parsing.editableToFloat(binding.editCourseForm.editTextCourseMinimumGrade.getText());
 
         boolean hasError = false;
 
         if (!AddCourseValidator.isCourseNameValid(courseName)) {
-            binding.editTextLayoutCourseName.setError(getString(R.string.editTextCourseName_errorHint));
+            binding.editCourseForm.editTextLayoutCourseName.setError(getString(R.string.editTextCourseName_errorHint));
             hasError = true;
         }
         if (!CommonValidator.isDateValid(courseStartDate)) {
-            binding.editTextLayoutCourseStartDate.setError(getString(R.string.editTextCourseStartDate_errorHint));
+            binding.editCourseForm.editTextLayoutCourseStartDate.setError(getString(R.string.editTextCourseStartDate_errorHint));
             hasError = true;
         }
         if (!CommonValidator.isDateValid(courseEndDate)) {
-            binding.editTextLayoutCourseEndDate.setError(getString(R.string.editTextCourseEndDate_errorHint));
+            binding.editCourseForm.editTextLayoutCourseEndDate.setError(getString(R.string.editTextCourseEndDate_errorHint));
             hasError = true;
         }
 

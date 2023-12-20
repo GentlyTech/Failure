@@ -57,19 +57,19 @@ public class AddCourseFragment extends Fragment {
 
         SimpleDateFormat dateFormatter = new SimpleDateFormat(DATE_FORMAT, Locale.CANADA); // TODO maybe make locale dynamic
 
-        binding.editTextLayoutCourseStartDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
+        binding.addCourseForm.editTextLayoutCourseStartDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
             Calendar calendar = Calendar.getInstance();
             calendar.set(year, month, day);
 
-            binding.editTextCourseStartDate.setText(dateFormatter.format(calendar.getTime()));
+            binding.addCourseForm.editTextCourseStartDate.setText(dateFormatter.format(calendar.getTime()));
             return null;
         }).show(getParentFragmentManager(), null));
 
-        binding.editTextLayoutCourseEndDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
+        binding.addCourseForm.editTextLayoutCourseEndDate.setEndIconOnClickListener(v -> new DatePickerFragment((v2, year, month, day) -> {
             Calendar calendar = Calendar.getInstance();
             calendar.set(year, month, day);
 
-            binding.editTextCourseEndDate.setText(dateFormatter.format(calendar.getTime()));
+            binding.addCourseForm.editTextCourseEndDate.setText(dateFormatter.format(calendar.getTime()));
             return null;
         }).show(getParentFragmentManager(), null));
 
@@ -85,32 +85,32 @@ public class AddCourseFragment extends Fragment {
     }
 
     public void clearFieldErrors() {
-        binding.editTextLayoutCourseName.setError(null);
-        binding.editTextLayoutCourseStartDate.setError(null);
-        binding.editTextLayoutCourseEndDate.setError(null);
+        binding.addCourseForm.editTextLayoutCourseName.setError(null);
+        binding.addCourseForm.editTextLayoutCourseStartDate.setError(null);
+        binding.addCourseForm.editTextLayoutCourseEndDate.setError(null);
     }
 
     public void createCourse(View button) {
         clearFieldErrors();
 
-        String courseName = Parsing.editableToString(binding.editTextCourseName.getText());
-        String courseSubject = Parsing.editableToString(binding.editTextCourseSubject.getText());
-        String courseStartDate = Parsing.editableToString(binding.editTextCourseStartDate.getText());
-        String courseEndDate = Parsing.editableToString(binding.editTextCourseEndDate.getText());
-        float courseMinimumGrade = Parsing.editableToFloat(binding.editTextCourseMinimumGrade.getText());
+        String courseName = Parsing.editableToString(binding.addCourseForm.editTextCourseName.getText());
+        String courseSubject = Parsing.editableToString(binding.addCourseForm.editTextCourseSubject.getText());
+        String courseStartDate = Parsing.editableToString(binding.addCourseForm.editTextCourseStartDate.getText());
+        String courseEndDate = Parsing.editableToString(binding.addCourseForm.editTextCourseEndDate.getText());
+        float courseMinimumGrade = Parsing.editableToFloat(binding.addCourseForm.editTextCourseMinimumGrade.getText());
 
         boolean hasError = false;
 
         if (!AddCourseValidator.isCourseNameValid(courseName)) {
-            binding.editTextLayoutCourseName.setError(getString(R.string.editTextCourseName_errorHint));
+            binding.addCourseForm.editTextLayoutCourseName.setError(getString(R.string.editTextCourseName_errorHint));
             hasError = true;
         }
         if (!CommonValidator.isDateValid(courseStartDate)) {
-            binding.editTextLayoutCourseStartDate.setError(getString(R.string.editTextCourseStartDate_errorHint));
+            binding.addCourseForm.editTextLayoutCourseStartDate.setError(getString(R.string.editTextCourseStartDate_errorHint));
             hasError = true;
         }
         if (!CommonValidator.isDateValid(courseEndDate)) {
-            binding.editTextLayoutCourseEndDate.setError(getString(R.string.editTextCourseEndDate_errorHint));
+            binding.addCourseForm.editTextLayoutCourseEndDate.setError(getString(R.string.editTextCourseEndDate_errorHint));
             hasError = true;
         }
 
