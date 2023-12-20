@@ -19,7 +19,8 @@
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editTextSubmittableName" />
+                android:id="@+id/editTextSubmittableName"
+                android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -35,7 +36,8 @@
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editTextSubmittableDescription" />
+                android:id="@+id/editTextSubmittableDescription"
+                android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -55,7 +57,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editTextSubmittableAssignDate"
-                android:inputType="datetime|date" />
+                android:inputType="datetime|date"
+                android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -75,7 +78,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editTextSubmittableDueDate"
-                android:inputType="datetime|date" />
+                android:inputType="datetime|date"
+                android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,7 +98,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editTextSubmittableWeight"
-                android:inputType="number|numberDecimal" />
+                android:inputType="number|numberDecimal"
+                android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -112,7 +117,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editTextSubmittableMaxGrade"
-                android:inputType="number|numberDecimal" />
+                android:inputType="number|numberDecimal"
+                android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
