@@ -65,5 +65,6 @@
     <!-- Submittable Info Fragment -->
     <string name="textSubmittableInfoWeight_text">Weight: %1$s%%</string>
     <string name="editTextSubmittableInfoAchievedGrade_hint">Achieved Grade</string>
+    <string name="editTextSubmittableInfoAchievedGrade_helperText">Leave blank to mark this submittable as incomplete.</string>
 
 </resources>

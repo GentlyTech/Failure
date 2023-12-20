@@ -12,20 +12,21 @@
             android:id="@+id/submittableInfoDash" />
 
     <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/submittableInfoDash"
-            android:id="@+id/editTextLayoutAchievedGrade"
-            android:hint="@string/editTextSubmittableInfoAchievedGrade_hint">
+        android:id="@+id/editTextLayoutAchievedGrade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="@string/editTextSubmittableInfoAchievedGrade_hint"
+        app:helperText="@string/editTextSubmittableInfoAchievedGrade_helperText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/submittableInfoDash">
 
         <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editTextAchievedGrade"
-                android:inputType="number|numberDecimal" />
+            android:id="@+id/editTextAchievedGrade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number|numberDecimal|numberSigned" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -63,7 +63,13 @@ public class SubmittableInfoFragment extends Fragment {
 
         binding.editTextAchievedGrade.addTextChangedListener(new AfterTextChangedListener(newRawValue -> {
             try {
-                float newValue = Float.parseFloat(newRawValue.toString());
+                float newValue;
+                if (newRawValue == null) {
+                    newValue = -1.0f;
+                } else {
+                    newValue = Float.parseFloat(newRawValue.toString());
+                }
+
                 if (newValue == submittable.getAchievedGrade()) return;
 
                 Submittable updatedSubmittable = submittable.clone();
