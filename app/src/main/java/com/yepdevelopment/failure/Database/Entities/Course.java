@@ -18,7 +18,7 @@ import java.util.logging.SimpleFormatter;
 
 
 @Entity
-public class Course {
+public class Course implements Cloneable {
     @PrimaryKey
     @NonNull
     private String id;
@@ -78,6 +78,18 @@ public class Course {
         SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT, Locale.CANADA);
         String date = formatter.format(Calendar.getInstance().getTime());
         return new Course(UUID.randomUUID().toString(), UUID.randomUUID().toString(), date, date, (float) (Math.random() * 100));
+    }
+
+    @NonNull
+    public Course clone() {
+        try {
+            Course clone = (Course) super.clone();
+            return new Course(clone.getId(), clone.name, clone.subject, clone.startDate, clone.endDate, clone.minimumGrade);
+        }
+        catch (CloneNotSupportedException ignored) {
+            return new Course();
+        }
+
     }
 
     public String getId() {
