@@ -14,6 +14,7 @@
     <string name="save">Save</string>
     <string name="submittables">Submittables</string>
     <string name="dateFormatHelperText">Dates are formatted as yyyy/mm/dd.</string>
+    <string name="dateInterval">%1$s - %2$s</string>
 
     <!-- Fragment Titles -->
     <string name="aboutFragmentTitle">About %1$s</string>
@@ -31,7 +32,6 @@
     <!-- Course Overview Fragment -->
     <string name="textSubmittableListEmptyHintHeader_text">No submittables</string>
     <string name="textSubmittableListEmptyHintBody_text">Create submittables using the + button</string>
-    <string name="textCourseOverviewDateInterval_text">%1$s - %2$s</string>
     <string name="textCourseOverviewMinimumGrade_text">Passing Grade: %1$s%%</string>
 
     <!-- Add Course Fragment -->
