@@ -28,3 +28,7 @@ Ok, but seriously, the primary goal of the app is to calculate minimum grades ne
   - If an assignment is already complete:
     - Find next highest weighted assignment and do some magic? If there are multiple assignments of equal weight then maybe balance the lowest grade into all of those.
     - Ignore the rest?
+
+## TODOs
+
+- Add relation between Course and Submittable so that Submittables aren't orphaned when a Course is deleted
