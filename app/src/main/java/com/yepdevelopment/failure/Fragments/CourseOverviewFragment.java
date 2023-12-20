@@ -53,14 +53,13 @@ public class CourseOverviewFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        binding.includeCourseCardInOverview.textCourseCardCourseName.setText(course.getName());
-        binding.includeCourseCardInOverview.textCourseCardCourseSubject.setText(course.getSubject());
-        binding.includeCourseCardInOverview.imageCourseCardArrow.setVisibility(View.GONE);
+        binding.textCourseOverviewName.setText(course.getName());
+        binding.textCourseOverviewSubject.setText(course.getSubject());
 
         float calculatedGrade = course.calculateGrade();
-        binding.includeCourseCardInOverview.textCourseCardCourseGrade.setText(String.format("%s%%", course.calculateGrade()));
+        binding.textCourseOverviewGrade.setText(String.format("%s%%", course.calculateGrade()));
         if (calculatedGrade < course.getMinimumGrade()) {
-            binding.includeCourseCardInOverview.textCourseCardCourseGrade.setTextColor(requireContext().getColor(R.color.niceRed));
+            binding.textCourseOverviewGrade.setTextColor(requireContext().getColor(R.color.niceRed));
         }
 
         binding.floatingActionButtonAddSubmittable.setOnClickListener(ignored -> navController.navigate(CourseOverviewFragmentDirections.actionCourseOverviewFragmentToAddSubmittableFragment()));
