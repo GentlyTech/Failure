@@ -6,7 +6,6 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.yepdevelopment.failure.Database.Entities.Course;
 import com.yepdevelopment.failure.Database.Entities.Submittable;
 
 import java.util.List;
@@ -25,5 +24,5 @@ public interface SubmittableDAO {
     Completable insertAll(Submittable... submittables);
 
     @Delete
-    Completable delete(Submittable submittable);
+    Completable delete(Submittable submittable); // FIXME figure out why deletion won't work
 }
