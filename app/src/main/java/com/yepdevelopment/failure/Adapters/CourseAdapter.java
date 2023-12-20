@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yepdevelopment.failure.Database.Entities.Course;
+import com.yepdevelopment.failure.R;
+import com.yepdevelopment.failure.Utils.Android.ResourceManipulator;
 import com.yepdevelopment.failure.ViewHolders.GenericViewHolder;
 import com.yepdevelopment.failure.databinding.ComponentCourseCardBinding;
 
@@ -54,7 +56,12 @@ public class CourseAdapter extends RecyclerView.Adapter<GenericViewHolder<Compon
         binding.courseCard.setOnClickListener((ignored) -> this.onClickHandler.accept(course)); // TODO this is probably wrong
         binding.textCourseCardCourseName.setText(course.getName());
         binding.textCourseCardCourseSubject.setText(course.getSubject());
-        binding.textCourseCardCourseGrade.setText(String.format("%s%%", course.calculateGrade())); // TODO perhaps come up with a better way to format this string
+
+        float calculatedGrade = course.calculateGrade();
+        binding.textCourseCardCourseGrade.setText(String.format("%s%%", calculatedGrade)); // TODO perhaps come up with a better way to format this string
+        if (calculatedGrade < course.getMinimumGrade()) {
+            binding.textCourseCardCourseGrade.setTextColor(context.getColor(R.color.niceRed));
+        }
     }
 
     @Override
