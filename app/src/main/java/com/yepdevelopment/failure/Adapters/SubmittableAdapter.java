@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yepdevelopment.failure.Database.Entities.Submittable;
+import com.yepdevelopment.failure.R;
 import com.yepdevelopment.failure.ViewHolders.GenericViewHolder;
 import com.yepdevelopment.failure.databinding.ComponentSubmittableCardBinding;
 
@@ -53,7 +54,7 @@ public class SubmittableAdapter extends RecyclerView.Adapter<GenericViewHolder<C
         ComponentSubmittableCardBinding binding = holder.getBinding();
         binding.submittableCard.setOnClickListener((ignored) -> this.onClickHandler.accept(submittable)); // FIXME this is probably wrong
         binding.textSubmittableCardName.setText(submittable.getName());
-        binding.textSubmittableCardDescription.setText(submittable.getDescription());
+        binding.textSubmittableCardDate.setText(context.getString(R.string.dueDate, submittable.getDueDate()));
         binding.textSubmittableCardMinimumGrade.setText(String.format("%s%%", submittable.calculateGrade()));
     }
 
