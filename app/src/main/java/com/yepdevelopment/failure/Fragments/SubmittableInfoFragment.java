@@ -55,7 +55,7 @@ public class SubmittableInfoFragment extends Fragment {
         menuHost.addMenuProvider(new MenuProvider() {
             @Override
             public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
-                menuInflater.inflate(R.menu.course_options, menu);
+                menuInflater.inflate(R.menu.submittable_options, menu);
             }
 
             @Override
