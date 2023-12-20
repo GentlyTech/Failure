@@ -50,18 +50,12 @@ public class SubmittableInfoFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        binding.submittableInfoDash.entityDashTitle.setText(submittable.getName());
-        binding.submittableInfoDash.entityDashDate.setText(getString(R.string.dateInterval, submittable.getAssignDate(), submittable.getDueDate()));
-        binding.submittableInfoDash.entityDashBigNumber.setText(String.format("%s%%", submittable.calculateGrade()));
-        binding.submittableInfoDash.entityDashBigNumberCaption.setText(getString(R.string.textSubmittableInfoWeight_text, String.valueOf(submittable.getWeight())));
+        mainViewModel.getSelectedSubmittable().observe(getViewLifecycleOwner(), updatedSubmittable -> {
+            submittable = updatedSubmittable;
+            setValues();
+        });
 
-        String description = submittable.getDescription();
-        if (description.isEmpty()) {
-            binding.submittableInfoDash.entityDashBody.setVisibility(View.GONE);
-        } else {
-            binding.submittableInfoDash.entityDashBody.setVisibility(View.VISIBLE);
-            binding.submittableInfoDash.entityDashBody.setText(description);
-        }
+        setValues();
 
         MenuHost menuHost = requireActivity();
         menuHost.addMenuProvider(new MenuProvider() {
@@ -77,9 +71,8 @@ public class SubmittableInfoFragment extends Fragment {
                     mainViewModel.setSelectedSubmittable(null);
                     navController.popBackStack();
                     return true;
-                }
-                else if (menuItem.getItemId() == R.id.submittableOptionEdit) {
-                    // navController.navigate(SubmittableInfoFragmentDirections.); // TODO implement submittable editing
+                } else if (menuItem.getItemId() == R.id.submittableOptionEdit) {
+                    navController.navigate(SubmittableInfoFragmentDirections.actionSubmittableInfoFragmentToEditSubmittableFragment());
                 }
                 return false;
             }
@@ -96,5 +89,20 @@ public class SubmittableInfoFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         mainViewModel.setSelectedSubmittable(null);
+    }
+
+    public void setValues() {
+        binding.submittableInfoDash.entityDashTitle.setText(submittable.getName());
+        binding.submittableInfoDash.entityDashDate.setText(getString(R.string.dateInterval, submittable.getAssignDate(), submittable.getDueDate()));
+        binding.submittableInfoDash.entityDashBigNumber.setText(String.format("%s%%", submittable.calculateGrade()));
+        binding.submittableInfoDash.entityDashBigNumberCaption.setText(getString(R.string.textSubmittableInfoWeight_text, String.valueOf(submittable.getWeight())));
+
+        String description = submittable.getDescription();
+        if (description.isEmpty()) {
+            binding.submittableInfoDash.entityDashBody.setVisibility(View.GONE);
+        } else {
+            binding.submittableInfoDash.entityDashBody.setVisibility(View.VISIBLE);
+            binding.submittableInfoDash.entityDashBody.setText(description);
+        }
     }
 }

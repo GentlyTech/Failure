@@ -22,6 +22,7 @@
     <string name="addSubmittableFragmentTitle">Add submittable</string>
     <string name="courseOverviewFragmentTitle">%1$s</string>
     <string name="editCourseFragmentTitle">Edit %1$s</string>
+    <string name="editSubmittableFragmentTitle">Edit %1$s</string>
     <string name="homeFragmentTitle">Courses</string>
     <string name="submittableInfoFragmentTitle">%1$s</string>
 
