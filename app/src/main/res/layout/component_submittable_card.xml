@@ -78,15 +78,25 @@
                     android:id="@+id/textSubmittableCardMinimumGrade"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginEnd="16dp"
                     android:textSize="24sp"
                     android:gravity="center"
                     app:autoSizeTextType="uniform"
                     android:layout_marginBottom="16dp"
-                    android:layout_marginTop="16dp"
                     app:autoSizeMaxTextSize="24sp"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    app:layout_constraintTop_toBottomOf="@+id/imageSubmittableCardComplete"
+                    android:layout_marginTop="8dp" />
+
+            <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    app:srcCompat="@drawable/baseline_check_circle_24"
+                    android:id="@+id/imageSubmittableCardComplete"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="16dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

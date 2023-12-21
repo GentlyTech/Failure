@@ -3,6 +3,7 @@ package com.yepdevelopment.failure.Adapters;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -56,6 +57,12 @@ public class SubmittableAdapter extends RecyclerView.Adapter<GenericViewHolder<C
         binding.textSubmittableCardName.setText(submittable.getName());
         binding.textSubmittableCardDate.setText(context.getString(R.string.dueDate, submittable.getDueDate()));
         binding.textSubmittableCardMinimumGrade.setText(String.format("%s%%", submittable.calculateGrade()));
+
+        if (submittable.isComplete()) {
+            binding.imageSubmittableCardComplete.setVisibility(View.VISIBLE);
+        } else {
+            binding.imageSubmittableCardComplete.setVisibility(View.GONE);
+        }
     }
 
     @Override
