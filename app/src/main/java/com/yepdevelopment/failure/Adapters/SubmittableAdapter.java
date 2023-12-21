@@ -65,7 +65,7 @@ public class SubmittableAdapter extends RecyclerView.Adapter<GenericViewHolder<C
         binding.submittableCard.setOnClickListener((ignored) -> this.onClickHandler.accept(submittable)); // FIXME this is probably wrong
         binding.textSubmittableCardName.setText(submittable.getName());
         binding.textSubmittableCardDate.setText(context.getString(R.string.dueDate, submittable.getDueDate()));
-        binding.textSubmittableCardMinimumGrade.setText(String.format("%s%%", submittable.calculateGrade(course.getMinimumGrade())));
+        binding.textSubmittableCardMinimumGrade.setText(String.format("%s%%", submittable.calculateMinimumGrade(course.getMinimumGrade())));
 
         if (submittable.isComplete()) {
             binding.imageSubmittableCardComplete.setVisibility(View.VISIBLE);

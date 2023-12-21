@@ -86,6 +86,10 @@ public class CourseOverviewFragment extends Fragment {
 
         binding.recyclerViewSubmittablesList.setLayoutManager(new LinearLayoutManager(requireContext()));
         database.submittableDao().getAllFromCourse(course.getId()).observe(getViewLifecycleOwner(), submittables -> {
+            Course updatedCourse = course.clone();
+            updatedCourse.setSubmittables(submittables);
+            mainViewModel.setSelectedCourse(updatedCourse);
+
             if (submittables == null || submittables.isEmpty()) {
                 binding.groupSubmittablesListEmptyHint.setVisibility(View.VISIBLE);
                 binding.recyclerViewSubmittablesList.setVisibility(View.GONE);

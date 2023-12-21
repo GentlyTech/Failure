@@ -25,6 +25,7 @@ public class Submittable implements Cloneable {
 
     /**
      * Full constructor for Submittable.
+     *
      * @param id
      * @param name
      * @param description
@@ -51,6 +52,7 @@ public class Submittable implements Cloneable {
 
     /**
      * Optional constructor for Submittable.
+     *
      * @param name
      * @param description
      * @param assignDate
@@ -195,14 +197,19 @@ public class Submittable implements Cloneable {
 
     /**
      * Calculates the minimum grade that this submittable needs to contribute to be able to pass the course/reach the desired grade.
-     * <p />
+     * <p/>
      * Each submittable assumes that the sum of all admissible submittables add up to the minimum/desired grade. This means that the weights of all submittables must also add up to 100.
+     *
      * @param minimumGrade the minimum/desired grade in the course to base the calculation off of. Assumed to be a number between 0.0f and 100.0f rather than 0.0f to 1.0f.
      * @return the grade (not a percentage) that you need to get on this submittable to play its part in passing the course/reaching the desired grade.
      */
-    public float calculateGrade(float minimumGrade) {
+    public float calculateMinimumGrade(float minimumGrade) {
         float targetWeight = (weight * minimumGrade) / 100;
         return (targetWeight * maxGrade) / weight;
+    }
+
+    public float calculateFinalGrade() {
+        return (achievedGrade * weight) / maxGrade;
     }
 
 }

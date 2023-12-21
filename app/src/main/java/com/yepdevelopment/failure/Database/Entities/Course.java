@@ -10,11 +10,9 @@ import androidx.room.PrimaryKey;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
-import java.util.logging.SimpleFormatter;
 
 
 @Entity
@@ -27,6 +25,9 @@ public class Course implements Cloneable {
     private String startDate;
     private String endDate;
     private float minimumGrade;
+
+    @Ignore
+    private float remainingGrade;
 
     /**
      * The submittables this class contains.
@@ -85,8 +86,7 @@ public class Course implements Cloneable {
         try {
             Course clone = (Course) super.clone();
             return new Course(clone.getId(), clone.name, clone.subject, clone.startDate, clone.endDate, clone.minimumGrade);
-        }
-        catch (CloneNotSupportedException ignored) {
+        } catch (CloneNotSupportedException ignored) {
             return new Course();
         }
 
@@ -149,6 +149,15 @@ public class Course implements Cloneable {
         this.minimumGrade = minimumGrade;
     }
 
+    public float getRemainingGrade() {
+        return this.remainingGrade;
+    }
+
+
+    public void setRemainingGrade(float remainingGrade) {
+        this.remainingGrade = remainingGrade;
+    }
+
 
     public List<Submittable> getSubmittables() {
         if (this.submittables == null) {
@@ -167,8 +176,13 @@ public class Course implements Cloneable {
 
 
     public float calculateGrade() {
-        // TODO implement calculateGrade()
-        return 0.0f;
+        float finalGrade = 0.0f;
+        for (Submittable submittable : getSubmittables()) {
+            if (!submittable.isComplete()) continue;
+            finalGrade += submittable.calculateFinalGrade();
+        }
+
+        return finalGrade;
     }
 
 
