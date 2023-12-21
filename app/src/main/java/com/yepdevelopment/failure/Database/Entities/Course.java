@@ -157,4 +157,18 @@ public class Course implements Cloneable {
         return finalGrade;
     }
 
+    public float calculateNewMinimumGrade(List<Submittable> submittables) {
+        float newMinimumGrade = minimumGrade;
+        for (Submittable submittable : submittables) {
+            if (!submittable.isComplete()) continue;
+            float ratio = (submittable.getAchievedGrade() * submittable.getWeight()) / submittable.getMaxGrade();
+            if (ratio < submittable.calculateMinimumGrade(minimumGrade)) {
+                ratio *= -1;
+            }
+            newMinimumGrade += ratio;
+        }
+
+        return newMinimumGrade;
+    }
+
 }
