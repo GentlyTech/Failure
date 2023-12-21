@@ -19,6 +19,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.yepdevelopment.failure.Database.AppDatabase;
+import com.yepdevelopment.failure.Database.Entities.Course;
 import com.yepdevelopment.failure.Database.Entities.Submittable;
 import com.yepdevelopment.failure.R;
 import com.yepdevelopment.failure.Utils.Android.TextChangedListeners.AfterTextChangedListener;
@@ -28,6 +29,7 @@ import com.yepdevelopment.failure.databinding.FragmentSubmittableInfoBinding;
 
 public class SubmittableInfoFragment extends Fragment {
     MainViewModel mainViewModel;
+    Course course;
     Submittable submittable;
     NavController navController;
     AppDatabase database;
@@ -41,7 +43,8 @@ public class SubmittableInfoFragment extends Fragment {
         database = AppDatabase.getInstance(requireContext());
 
         submittable = mainViewModel.getSelectedSubmittable().getValue();
-        if (submittable == null) navController.popBackStack();
+        course = mainViewModel.getSelectedCourse().getValue();
+        if (submittable == null || course == null) navController.popBackStack();
     }
 
     @Override
@@ -119,7 +122,7 @@ public class SubmittableInfoFragment extends Fragment {
     public void setValues(boolean updateFields) {
         binding.submittableInfoDash.entityDashTitle.setText(submittable.getName());
         binding.submittableInfoDash.entityDashDate.setText(getString(R.string.dateInterval, submittable.getAssignDate(), submittable.getDueDate()));
-        binding.submittableInfoDash.entityDashBigNumber.setText(String.format("%s%%", submittable.calculateGrade()));
+        binding.submittableInfoDash.entityDashBigNumber.setText(String.format("%s%%", submittable.calculateGrade(course.getMinimumGrade())));
         binding.submittableInfoDash.entityDashBigNumberCaption.setText(getString(R.string.textSubmittableInfoWeight_text, String.valueOf(submittable.getWeight())));
         binding.checkBoxSubmittableComplete.setChecked(submittable.isComplete());
 

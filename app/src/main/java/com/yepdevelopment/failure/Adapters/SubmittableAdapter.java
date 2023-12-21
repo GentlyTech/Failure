@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.yepdevelopment.failure.Database.Entities.Course;
 import com.yepdevelopment.failure.Database.Entities.Submittable;
 import com.yepdevelopment.failure.R;
 import com.yepdevelopment.failure.ViewHolders.GenericViewHolder;
@@ -21,15 +22,23 @@ import java.util.function.Consumer;
 public class SubmittableAdapter extends RecyclerView.Adapter<GenericViewHolder<ComponentSubmittableCardBinding>> {
     Context context;
     List<Submittable> submittables;
+    Course course;
     Consumer<Submittable> onClickHandler;
 
-    public SubmittableAdapter(@NonNull Context context, List<Submittable> submittables, Consumer<Submittable> onClickHandler) {
+    public SubmittableAdapter(@NonNull Context context, List<Submittable> submittables, Course course, Consumer<Submittable> onClickHandler) {
         this.context = context;
 
         if (submittables == null) {
             this.submittables = new ArrayList<>(0);
         } else {
             this.submittables = submittables;
+        }
+
+        if (course == null) {
+            this.course = new Course();
+        }
+        else {
+            this.course = course;
         }
 
         if (onClickHandler == null) {
@@ -56,7 +65,7 @@ public class SubmittableAdapter extends RecyclerView.Adapter<GenericViewHolder<C
         binding.submittableCard.setOnClickListener((ignored) -> this.onClickHandler.accept(submittable)); // FIXME this is probably wrong
         binding.textSubmittableCardName.setText(submittable.getName());
         binding.textSubmittableCardDate.setText(context.getString(R.string.dueDate, submittable.getDueDate()));
-        binding.textSubmittableCardMinimumGrade.setText(String.format("%s%%", submittable.calculateGrade()));
+        binding.textSubmittableCardMinimumGrade.setText(String.format("%s%%", submittable.calculateGrade(course.getMinimumGrade())));
 
         if (submittable.isComplete()) {
             binding.imageSubmittableCardComplete.setVisibility(View.VISIBLE);

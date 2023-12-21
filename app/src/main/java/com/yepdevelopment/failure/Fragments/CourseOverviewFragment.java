@@ -85,8 +85,8 @@ public class CourseOverviewFragment extends Fragment {
         }, getViewLifecycleOwner());
 
         binding.recyclerViewSubmittablesList.setLayoutManager(new LinearLayoutManager(requireContext()));
-        database.submittableDao().getAllFromCourse(course.getId()).observe(getViewLifecycleOwner(), courses -> {
-            if (courses == null || courses.isEmpty()) {
+        database.submittableDao().getAllFromCourse(course.getId()).observe(getViewLifecycleOwner(), submittables -> {
+            if (submittables == null || submittables.isEmpty()) {
                 binding.groupSubmittablesListEmptyHint.setVisibility(View.VISIBLE);
                 binding.recyclerViewSubmittablesList.setVisibility(View.GONE);
             } else {
@@ -94,7 +94,7 @@ public class CourseOverviewFragment extends Fragment {
                 binding.recyclerViewSubmittablesList.setVisibility(View.VISIBLE);
             }
 
-            binding.recyclerViewSubmittablesList.setAdapter(new SubmittableAdapter(requireContext(), courses, (submittable -> {
+            binding.recyclerViewSubmittablesList.setAdapter(new SubmittableAdapter(requireContext(), submittables, course, (submittable -> {
                 mainViewModel.setSelectedSubmittable(submittable);
                 navController.navigate(CourseOverviewFragmentDirections.actionCourseOverviewFragmentToSubmittableInfoFragment());
             })));
