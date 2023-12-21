@@ -72,7 +72,6 @@ public class HomeFragment extends Fragment {
                 setCourseListVisibility(!courses.isEmpty());
                 binding.recyclerViewCourseList.setAdapter(new CourseAdapter(requireContext(), courses, (course) -> {
                     mainViewModel.setSelectedCourse(course);
-                    Log.i(HomeFragment.class.getName(), String.format("Selected course set to: %s", course.getName()));
                     navController.navigate(HomeFragmentDirections.actionHomeFragmentToCourseOverviewFragment());
                 }));
                 return;
