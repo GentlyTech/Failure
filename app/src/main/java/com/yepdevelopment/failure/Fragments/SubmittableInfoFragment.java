@@ -75,6 +75,13 @@ public class SubmittableInfoFragment extends Fragment {
             }
         }));
 
+        binding.checkBoxSubmittableComplete.setOnCheckedChangeListener((ignored, newState) -> {
+            Submittable updatedSubmittable = submittable.clone();
+            updatedSubmittable.setCompletionState(newState);
+            Async.run(database.submittableDao().update(submittable, updatedSubmittable));
+            mainViewModel.setSelectedSubmittable(updatedSubmittable);
+        });
+
         MenuHost menuHost = requireActivity();
         menuHost.addMenuProvider(new MenuProvider() {
             @Override
@@ -114,6 +121,7 @@ public class SubmittableInfoFragment extends Fragment {
         binding.submittableInfoDash.entityDashDate.setText(getString(R.string.dateInterval, submittable.getAssignDate(), submittable.getDueDate()));
         binding.submittableInfoDash.entityDashBigNumber.setText(String.format("%s%%", submittable.calculateGrade()));
         binding.submittableInfoDash.entityDashBigNumberCaption.setText(getString(R.string.textSubmittableInfoWeight_text, String.valueOf(submittable.getWeight())));
+        binding.checkBoxSubmittableComplete.setChecked(submittable.isComplete());
 
         if (updateFields) {
             binding.editTextAchievedGrade.setText(String.valueOf(submittable.getAchievedGrade()));
