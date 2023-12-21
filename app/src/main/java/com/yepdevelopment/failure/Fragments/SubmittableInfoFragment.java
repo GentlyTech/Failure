@@ -122,9 +122,17 @@ public class SubmittableInfoFragment extends Fragment {
     public void setValues(boolean updateFields) {
         binding.submittableInfoDash.entityDashTitle.setText(submittable.getName());
         binding.submittableInfoDash.entityDashDate.setText(getString(R.string.dateInterval, submittable.getAssignDate(), submittable.getDueDate()));
-        binding.submittableInfoDash.entityDashBigNumber.setText(String.format("%s%%", submittable.calculateMinimumGrade(course.getMinimumGrade())));
         binding.submittableInfoDash.entityDashBigNumberCaption.setText(getString(R.string.textSubmittableInfoWeight_text, String.valueOf(submittable.getWeight())));
         binding.checkBoxSubmittableComplete.setChecked(submittable.isComplete());
+
+        if (submittable.isComplete()) {
+            Async.run(database.submittableDao().getAllFromCourse(course.getId()), submittables -> {
+                binding.submittableInfoDash.entityDashBigNumber.setText(String.format("%s%%", submittable.calculateMinimumGrade(course.calculateNewMinimumGrade(submittables))));
+            });
+        } else {
+            binding.submittableInfoDash.entityDashBigNumber.setText(String.format("%s%%", submittable.calculateFinalGrade()));
+        }
+
 
         if (updateFields) {
             binding.editTextAchievedGrade.setText(String.valueOf(submittable.getAchievedGrade()));
