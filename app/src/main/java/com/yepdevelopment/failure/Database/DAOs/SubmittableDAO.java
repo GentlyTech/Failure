@@ -12,14 +12,21 @@ import com.yepdevelopment.failure.Database.Entities.Submittable;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Single;
 
 @Dao
 public interface SubmittableDAO {
     @Query("SELECT * FROM submittable")
-    LiveData<List<Submittable>> getAll();
+    LiveData<List<Submittable>> getAllLive();
 
     @Query("SELECT * FROM submittable WHERE associatedCourseId == :courseId")
-    LiveData<List<Submittable>> getAllFromCourse(String courseId);
+    LiveData<List<Submittable>> getAllLiveFromCourse(String courseId);
+
+    @Query("SELECT * FROM submittable")
+    Single<List<Submittable>> getAll();
+
+    @Query("SELECT * FROM submittable WHERE associatedCourseId == :courseId")
+    Single<List<Submittable>> getAllFromCourse(String courseId);
 
     @Insert
     Completable insertAll(Submittable... submittables);

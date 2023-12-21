@@ -7,7 +7,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -85,7 +84,7 @@ public class CourseOverviewFragment extends Fragment {
         }, getViewLifecycleOwner());
 
         binding.recyclerViewSubmittablesList.setLayoutManager(new LinearLayoutManager(requireContext()));
-        database.submittableDao().getAllFromCourse(course.getId()).observe(getViewLifecycleOwner(), submittables -> {
+        database.submittableDao().getAllLiveFromCourse(course.getId()).observe(getViewLifecycleOwner(), submittables -> {
             Course updatedCourse = course.clone();
             updatedCourse.setSubmittables(submittables);
             mainViewModel.setSelectedCourse(updatedCourse);

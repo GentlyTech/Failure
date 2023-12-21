@@ -22,7 +22,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.yepdevelopment.failure.Adapters.CourseAdapter;
 import com.yepdevelopment.failure.Database.AppDatabase;
 import com.yepdevelopment.failure.R;
-import com.yepdevelopment.failure.Utils.JavaRX.Async;
 import com.yepdevelopment.failure.ViewModels.Activities.MainViewModel;
 import com.yepdevelopment.failure.databinding.FragmentHomeBinding;
 
@@ -68,7 +67,7 @@ public class HomeFragment extends Fragment {
 
         binding.recyclerViewCourseList.setLayoutManager(new LinearLayoutManager(requireContext()));
 
-        database.courseDao().getAll().observe(getViewLifecycleOwner(), (courses -> {
+        database.courseDao().getCoursesLive().observe(getViewLifecycleOwner(), (courses -> {
             if (courses != null) {
                 setCourseListVisibility(!courses.isEmpty());
                 binding.recyclerViewCourseList.setAdapter(new CourseAdapter(requireContext(), courses, (course) -> {
