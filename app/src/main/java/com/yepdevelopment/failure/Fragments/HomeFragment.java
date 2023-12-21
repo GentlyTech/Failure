@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment {
 
         binding.recyclerViewCourseList.setLayoutManager(new LinearLayoutManager(requireContext()));
 
-        database.courseDao().getCoursesLive().observe(getViewLifecycleOwner(), (courses -> {
+        database.courseDao().getCoursesWithSubmittablesLive().observe(getViewLifecycleOwner(), (courses -> {
             if (courses != null) {
                 setCourseListVisibility(!courses.isEmpty());
                 binding.recyclerViewCourseList.setAdapter(new CourseAdapter(requireContext(), courses, (course) -> {

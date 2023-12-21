@@ -9,8 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yepdevelopment.failure.Database.Entities.Course;
+import com.yepdevelopment.failure.Database.Entities.Submittable;
+import com.yepdevelopment.failure.Database.Relationships.CourseWithSubmittables;
 import com.yepdevelopment.failure.R;
-import com.yepdevelopment.failure.Utils.Android.ResourceManipulator;
 import com.yepdevelopment.failure.ViewHolders.GenericViewHolder;
 import com.yepdevelopment.failure.databinding.ComponentCourseCardBinding;
 
@@ -20,10 +21,10 @@ import java.util.function.Consumer;
 
 public class CourseAdapter extends RecyclerView.Adapter<GenericViewHolder<ComponentCourseCardBinding>> {
     Context context;
-    List<Course> courses;
+    List<CourseWithSubmittables> courses;
     Consumer<Course> onClickHandler;
 
-    public CourseAdapter(@NonNull Context context, List<Course> courses, Consumer<Course> onClickHandler) {
+    public CourseAdapter(@NonNull Context context, List<CourseWithSubmittables> courses, Consumer<Course> onClickHandler) {
         this.context = context;
 
         if (courses == null) {
@@ -49,7 +50,9 @@ public class CourseAdapter extends RecyclerView.Adapter<GenericViewHolder<Compon
 
     @Override
     public void onBindViewHolder(@NonNull GenericViewHolder<ComponentCourseCardBinding> holder, int position) {
-        Course course = courses.get(position);
+        CourseWithSubmittables courseWithSubmittables = courses.get(position);
+        Course course = courseWithSubmittables.course;
+        List<Submittable> submittables = courseWithSubmittables.submittables;
         if (course == null) return;
 
         ComponentCourseCardBinding binding = holder.getBinding();
@@ -57,12 +60,13 @@ public class CourseAdapter extends RecyclerView.Adapter<GenericViewHolder<Compon
         binding.textCourseCardCourseName.setText(course.getName());
         binding.textCourseCardCourseSubject.setText(course.getSubject());
 
-        float calculatedGrade = course.calculateGrade();
+        if (submittables == null) return;
+
+        float calculatedGrade = course.calculateGrade(submittables);
         binding.textCourseCardCourseGrade.setText(String.format("%s%%", calculatedGrade)); // TODO perhaps come up with a better way to format this string
         if (calculatedGrade < course.getMinimumGrade()) {
             binding.textCourseCardCourseGrade.setTextColor(context.getColor(R.color.niceRed));
-        }
-        else {
+        } else {
             binding.textCourseCardCourseGrade.setTextColor(context.getColor(R.color.niceGreen));
         }
     }

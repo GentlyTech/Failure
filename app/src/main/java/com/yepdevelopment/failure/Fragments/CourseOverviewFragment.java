@@ -85,10 +85,6 @@ public class CourseOverviewFragment extends Fragment {
 
         binding.recyclerViewSubmittablesList.setLayoutManager(new LinearLayoutManager(requireContext()));
         database.submittableDao().getAllLiveFromCourse(course.getId()).observe(getViewLifecycleOwner(), submittables -> {
-            Course updatedCourse = course.clone();
-            updatedCourse.setSubmittables(submittables);
-            mainViewModel.setSelectedCourse(updatedCourse);
-
             if (submittables == null || submittables.isEmpty()) {
                 binding.groupSubmittablesListEmptyHint.setVisibility(View.VISIBLE);
                 binding.recyclerViewSubmittablesList.setVisibility(View.GONE);
@@ -139,12 +135,14 @@ public class CourseOverviewFragment extends Fragment {
             binding.courseOverviewDash.entityDashBody.setText(subject);
         }
 
-        float calculatedGrade = course.calculateGrade();
-        binding.courseOverviewDash.entityDashBigNumber.setText(String.format("%s%%", course.calculateGrade()));
-        if (calculatedGrade < course.getMinimumGrade()) {
-            binding.courseOverviewDash.entityDashBigNumber.setTextColor(requireContext().getColor(R.color.niceRed));
-        } else {
-            binding.courseOverviewDash.entityDashBigNumber.setTextColor(requireContext().getColor(R.color.niceGreen));
-        }
+        Async.run(database.submittableDao().getAllFromCourse(course.getId()), submittables -> {
+            float calculatedGrade = course.calculateGrade(submittables);
+            binding.courseOverviewDash.entityDashBigNumber.setText(String.format("%s%%", calculatedGrade));
+            if (calculatedGrade < course.getMinimumGrade()) {
+                binding.courseOverviewDash.entityDashBigNumber.setTextColor(requireContext().getColor(R.color.niceRed));
+            } else {
+                binding.courseOverviewDash.entityDashBigNumber.setTextColor(requireContext().getColor(R.color.niceGreen));
+            }
+        });
     }
 }
