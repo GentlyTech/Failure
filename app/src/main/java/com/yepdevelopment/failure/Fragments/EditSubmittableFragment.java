@@ -131,7 +131,7 @@ public class EditSubmittableFragment extends Fragment {
 
         if (hasError) return;
 
-        Submittable updatedSubmittable = new Submittable(submittable.getId(), submittableName, submittableDescription, submittableAssignDate, submittableDueDate, submittable.getAssociatedCourseId(), submittableWeight, submittableMaxGrade);
+        Submittable updatedSubmittable = new Submittable(submittable.getId(), submittableName, submittableDescription, submittableAssignDate, submittableDueDate, submittable.getAssociatedCourseId(), submittableWeight, submittableMaxGrade, submittable.getAchievedGrade(), submittable.isComplete());
 
         Async.run(database.submittableDao().update(submittable, updatedSubmittable));
 

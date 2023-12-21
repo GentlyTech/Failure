@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Entity
 public class Submittable implements Cloneable {
+    boolean complete;
     @PrimaryKey
     @NonNull
     private String id;
@@ -22,7 +23,20 @@ public class Submittable implements Cloneable {
     private float maxGrade;
     private float achievedGrade;
 
-    public Submittable(@NonNull String id, String name, String description, String assignDate, String dueDate, String associatedCourseId, float weight, float maxGrade, float achievedGrade) {
+    /**
+     * Full constructor for Submittable.
+     * @param id
+     * @param name
+     * @param description
+     * @param assignDate
+     * @param dueDate
+     * @param associatedCourseId
+     * @param weight
+     * @param maxGrade
+     * @param achievedGrade
+     * @param complete
+     */
+    public Submittable(@NonNull String id, String name, String description, String assignDate, String dueDate, String associatedCourseId, float weight, float maxGrade, float achievedGrade, boolean complete) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -31,61 +45,20 @@ public class Submittable implements Cloneable {
         this.associatedCourseId = associatedCourseId;
         this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
         this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(maxGrade, 0.0f, 100.0f, 100.0f);
-        this.achievedGrade = achievedGrade;
+        this.achievedGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(achievedGrade, 0.0f, 100.0f, 0.0f);
+        this.complete = complete;
     }
 
-    @Ignore
-    public Submittable(String name, String description, String assignDate, String dueDate, float weight, float maxGrade, float achievedGrade) {
-        this.id = UUID.randomUUID().toString();
-        this.name = name;
-        this.description = description;
-        this.assignDate = assignDate;
-        this.dueDate = dueDate;
-        this.associatedCourseId = "";
-        this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
-        this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
-        this.achievedGrade = achievedGrade;
-    }
-
-    @Ignore
-    public Submittable(@NonNull String id, String name, String description, String assignDate, String dueDate, String associatedCourseId, float weight, float maxGrade) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.assignDate = assignDate;
-        this.dueDate = dueDate;
-        this.associatedCourseId = associatedCourseId;
-        this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
-        this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
-        this.achievedGrade = 0.0f;
-    }
-
-    @Ignore
-    public Submittable(String name, String description, String assignDate, String dueDate, String associatedCourseId, float weight, float maxGrade, float achievedGrade) {
-        this.id = UUID.randomUUID().toString();
-        this.name = name;
-        this.description = description;
-        this.assignDate = assignDate;
-        this.dueDate = dueDate;
-        this.associatedCourseId = associatedCourseId;
-        this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
-        this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
-        this.achievedGrade = achievedGrade;
-    }
-
-    @Ignore
-    public Submittable(String name, String description, String assignDate, String dueDate, float weight, float maxGrade) {
-        this.id = UUID.randomUUID().toString();
-        this.name = name;
-        this.description = description;
-        this.assignDate = assignDate;
-        this.dueDate = dueDate;
-        this.associatedCourseId = "";
-        this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
-        this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
-        this.achievedGrade = 0.0f;
-    }
-
+    /**
+     * Optional constructor for Submittable.
+     * @param name
+     * @param description
+     * @param assignDate
+     * @param dueDate
+     * @param associatedCourseId
+     * @param weight
+     * @param maxGrade
+     */
     @Ignore
     public Submittable(String name, String description, String assignDate, String dueDate, String associatedCourseId, float weight, float maxGrade) {
         this.id = UUID.randomUUID().toString();
@@ -95,8 +68,9 @@ public class Submittable implements Cloneable {
         this.dueDate = dueDate;
         this.associatedCourseId = associatedCourseId;
         this.weight = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 10.0f);
-        this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(weight, 0.0f, 100.0f, 100.0f);
+        this.maxGrade = com.yepdevelopment.failure.Utils.General.Math.clamp(maxGrade, 0.0f, 100.0f, 100.0f);
         this.achievedGrade = 0.0f;
+        this.complete = false;
     }
 
     @Ignore
@@ -110,6 +84,7 @@ public class Submittable implements Cloneable {
         this.weight = 10.0f;
         this.maxGrade = 100.0f;
         this.achievedGrade = 0.0f;
+        this.complete = false;
     }
 
     @NonNull
@@ -117,7 +92,7 @@ public class Submittable implements Cloneable {
     public Submittable clone() {
         try {
             Submittable clone = (Submittable) super.clone();
-            return new Submittable(clone.getId(), clone.name, clone.description, clone.assignDate, clone.dueDate, clone.getAssociatedCourseId(), clone.weight, clone.maxGrade, clone.achievedGrade);
+            return new Submittable(clone.getId(), clone.name, clone.description, clone.assignDate, clone.dueDate, clone.getAssociatedCourseId(), clone.weight, clone.maxGrade, clone.achievedGrade, clone.complete);
         } catch (CloneNotSupportedException ignored) {
             return new Submittable();
         }
@@ -208,6 +183,14 @@ public class Submittable implements Cloneable {
 
     public void setAchievedGrade(float achievedGrade) {
         this.achievedGrade = achievedGrade;
+    }
+
+    public void setCompletionState(boolean newState) {
+        this.complete = newState;
+    }
+
+    public boolean isComplete() {
+        return this.complete;
     }
 
     public float calculateGrade() {
