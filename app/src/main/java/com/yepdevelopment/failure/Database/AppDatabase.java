@@ -23,7 +23,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public static AppDatabase getInstance(Context applicationContext) {
         if (instance == null) {
-            instance = Room.databaseBuilder(applicationContext, AppDatabase.class, "FailureDB").build();
+            instance = Room.databaseBuilder(applicationContext, AppDatabase.class, "FailureDB").fallbackToDestructiveMigration().build();
         }
         return instance;
     }
