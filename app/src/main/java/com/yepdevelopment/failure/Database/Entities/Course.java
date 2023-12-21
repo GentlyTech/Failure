@@ -8,7 +8,6 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -104,46 +103,37 @@ public class Course implements Cloneable {
         return this.name;
     }
 
-
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getSubject() {
         return this.subject;
     }
 
-
     public void setSubject(String subject) {
         this.subject = subject;
     }
-
 
     public String getStartDate() {
         return this.startDate;
     }
 
-
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
-
 
     public String getEndDate() {
         return this.endDate;
     }
 
-
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
-
     public float getMinimumGrade() {
         return this.minimumGrade;
     }
-
 
     public void setMinimumGrade(float minimumGrade) {
         this.minimumGrade = minimumGrade;
@@ -153,37 +143,18 @@ public class Course implements Cloneable {
         return this.remainingGrade;
     }
 
-
     public void setRemainingGrade(float remainingGrade) {
         this.remainingGrade = remainingGrade;
     }
 
-
-    public List<Submittable> getSubmittables() {
-        if (this.submittables == null) {
-            this.submittables = new ArrayList<Submittable>();
-        }
-        return this.submittables;
-    }
-
-
-    public void setSubmittables(List<Submittable> submittable) {
-        this.submittables = submittable;
-    }
-
-
-    //                          Operations                                  
-
-
-    public float calculateGrade() {
+    public float calculateGrade(List<Submittable> submittables) {
         float finalGrade = 0.0f;
-        for (Submittable submittable : getSubmittables()) {
+        for (Submittable submittable : submittables) {
             if (!submittable.isComplete()) continue;
             finalGrade += submittable.calculateFinalGrade();
         }
 
         return finalGrade;
     }
-
 
 }
