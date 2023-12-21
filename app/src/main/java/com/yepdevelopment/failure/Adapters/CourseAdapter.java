@@ -62,6 +62,9 @@ public class CourseAdapter extends RecyclerView.Adapter<GenericViewHolder<Compon
         if (calculatedGrade < course.getMinimumGrade()) {
             binding.textCourseCardCourseGrade.setTextColor(context.getColor(R.color.niceRed));
         }
+        else {
+            binding.textCourseCardCourseGrade.setTextColor(context.getColor(R.color.niceGreen));
+        }
     }
 
     @Override

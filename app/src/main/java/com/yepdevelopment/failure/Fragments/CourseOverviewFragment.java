@@ -145,7 +145,7 @@ public class CourseOverviewFragment extends Fragment {
         if (calculatedGrade < course.getMinimumGrade()) {
             binding.courseOverviewDash.entityDashBigNumber.setTextColor(requireContext().getColor(R.color.niceRed));
         } else {
-            binding.courseOverviewDash.entityDashBigNumber.setTextColor(new TextView(requireContext()).getTextColors()); // FIXME jank way to get default colors but it works
+            binding.courseOverviewDash.entityDashBigNumber.setTextColor(requireContext().getColor(R.color.niceGreen));
         }
     }
 }
